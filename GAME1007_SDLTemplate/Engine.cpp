@@ -1,7 +1,5 @@
 #include "Engine.h"
 
-#include <SDL_image.h>
-
 int Engine::Init(const char* title, int xPos, int yPos, int width, int height, int flags)
 {
 	cout << "Initializing engine..." << endl;
@@ -19,10 +17,6 @@ int Engine::Init(const char* title, int xPos, int yPos, int width, int height, i
 			{
 				// Initialize subsystems later...
 				cout << "Third pass." << endl;
-				if (IMG_Init(IMG_INIT_PNG | IMG_INIT_JPG) != 0)
-				{
-					m_pTexture = IMG_LoadTexture(m_pRenderer, "assets/player/Another_idle.png");
-				}
 			}
 			else return false; // Renderer creation failed.
 		}

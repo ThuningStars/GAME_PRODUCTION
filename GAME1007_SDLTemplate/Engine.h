@@ -26,8 +26,6 @@ private: // private properties.
 
 	}; //Position X and y, width and height 
 	PlatformPlayer m_player;
-	// Textures
-	SDL_Texture* m_pTexture;
 
 private: // private method prototypes.
 	int Init(const char* title, int xPos, int yPos, int width, int height, int flags);
