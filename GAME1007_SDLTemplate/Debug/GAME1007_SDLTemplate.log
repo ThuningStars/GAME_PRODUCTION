@@ -1,1 +1,6 @@
-﻿  GAME1007_SDLTemplate.vcxproj -> E:\GAME Programing\Winter 2021\Game 1014 Production\GAME_PRODUCTION\Debug\GAME1007_SDLTemplate.exe
+﻿  Engine.cpp
+E:\GAME Programing\Winter 2021\Game 1014 Production\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(91,36): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+E:\GAME Programing\Winter 2021\Game 1014 Production\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(97,36): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+E:\GAME Programing\Winter 2021\Game 1014 Production\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(103,36): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+E:\GAME Programing\Winter 2021\Game 1014 Production\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(109,36): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+  GAME1007_SDLTemplate.vcxproj -> E:\GAME Programing\Winter 2021\Game 1014 Production\GAME_PRODUCTION\Debug\GAME1007_SDLTemplate.exe

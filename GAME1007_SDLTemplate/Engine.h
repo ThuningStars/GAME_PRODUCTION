@@ -26,6 +26,8 @@ private: // private properties.
 
 	}; //Position X and y, width and height 
 	PlatformPlayer m_player;
+	SDL_Texture* m_playerIdleTexture, *m_playerRunTexture;
+	SDL_RendererFlip flip = SDL_FLIP_NONE;
 
 private: // private method prototypes.
 	int Init(const char* title, int xPos, int yPos, int width, int height, int flags);

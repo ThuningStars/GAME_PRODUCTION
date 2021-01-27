@@ -19,26 +19,35 @@ private:
 		m_maxVelY,
 		m_drag,
 		m_gravity;
-	SDL_Rect m_rect;
-	SDL_Renderer* m_rend;
+	SDL_Rect m_dstRect;
+	SDL_Rect m_srcRect;
+	SDL_Renderer* m_pRend;
+
+	int m_timer = 0;
+	double m_angle = 0.0;
+	SDL_Point* m_pCenter = NULL;
+	bool m_running = false;
+
 public:
 	
 	void Init(SDL_Renderer* r);
-	SDL_Rect* GetRect();
+	SDL_Rect* GetDstRect();
+	SDL_Rect* GetSrcRect();
 	void Update();
-	void Render();
+	void Render(SDL_Texture* texture, PlatformPlayer player, SDL_RendererFlip flip);
 	void Stop();
 	void StopX();
 	void StopY();
 	void SetAccelX(double a);
 	void SetAccelY(double a);
+	void SetRunning(bool r);
 	bool isGrounded();
+	bool getRunning();
 	void SetGrounded(bool g);
 	double GetVelX();
 	double GetVelY();
 	void SetX(float x);
 	void SetY(float y);
-
 };
 
 #endif // !_PLATFORMPLAYER_H_
