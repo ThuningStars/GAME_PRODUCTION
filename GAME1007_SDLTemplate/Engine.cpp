@@ -53,7 +53,16 @@ void Engine::HandleEvents()
 			{
 				m_player.SetAccelY(-JUMPFORCE);
 				m_player.SetGrounded(false);
+
 			}
+			if (event.key.keysym.sym == SDLK_k && m_player.isGrounded())
+			{
+				// Spawn a bullet
+				m_playerbullet.push_back(new Bullet({ m_player.GetRect()->x + 60, m_player.GetRect()->y + 40 }));
+				m_playerbullet.shrink_to_fit();
+				cout << "New bullet vector capacity: " << m_playerbullet.capacity() << endl;
+			}
+		
 		}
 	}
 }
@@ -115,6 +124,22 @@ void Engine::Update()
 	//Update the player
 	m_player.Update();
 	CheckCollision();
+
+	for (int i = 0; i < m_playerbullet.size(); i++)
+		m_playerbullet[i]->Update();
+
+	// Check for bullets going off - screen...
+		for (unsigned i = 0; i < m_playerbullet.size(); i++)
+		{
+			if (m_playerbullet[i]->GetRekt()->x >= WIDTH)
+			{
+				delete m_playerbullet[i];
+				m_playerbullet[i] = nullptr;
+				m_playerbullet.erase(m_playerbullet.begin() + i);
+				m_playerbullet.shrink_to_fit();
+				break;
+			}
+		}
 }
 
 void Engine::Render()
@@ -126,6 +151,8 @@ void Engine::Render()
 	for (int i = 0; i < 5; i++)
 		SDL_RenderFillRect(m_pRenderer, &m_Platforms[i]);
 	m_player.Render();
+	for (int i = 0; i < m_playerbullet.size(); i++)
+		m_playerbullet[i]->Render(m_pRenderer);
 	SDL_RenderPresent(m_pRenderer); // Flip buffers - send data to window.
 	// Any drawing here...
 
@@ -170,6 +197,13 @@ int Engine::Run()
 void Engine::Clean()
 {
 	cout << "Cleaning engine..." << endl;
+	for (int i = 0; i < m_playerbullet.size(); i++)
+	{
+		delete m_playerbullet[i]; // Flag for reallocation
+		m_playerbullet[i] = nullptr;
+	}
+	m_playerbullet.clear();
+	m_playerbullet.shrink_to_fit();
 	SDL_DestroyRenderer(m_pRenderer);
 	SDL_DestroyWindow(m_pWindow);
 	SDL_Quit();

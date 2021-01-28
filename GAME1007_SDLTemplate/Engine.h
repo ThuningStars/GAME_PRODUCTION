@@ -5,6 +5,7 @@
 #include "SDL.h"
 #include <iostream>
 #include "PlatformPlayer.h"
+#include "PlayerBullet.h"
 #define FPS 60
 #define WIDTH 1024
 #define HEIGHT 768
@@ -26,6 +27,7 @@ private: // private properties.
 
 	}; //Position X and y, width and height 
 	PlatformPlayer m_player;
+	vector<Bullet*> m_playerbullet;
 
 private: // private method prototypes.
 	int Init(const char* title, int xPos, int yPos, int width, int height, int flags);
