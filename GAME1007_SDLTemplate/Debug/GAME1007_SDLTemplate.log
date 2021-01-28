@@ -6,6 +6,4 @@ F:\GitProjects\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(106,36): warning 
 F:\GitProjects\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(128,20): warning C4018: '<': signed/unsigned mismatch
 F:\GitProjects\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(154,20): warning C4018: '<': signed/unsigned mismatch
 F:\GitProjects\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(200,20): warning C4018: '<': signed/unsigned mismatch
-  Main.cpp
-  Generating Code...
   GAME1007_SDLTemplate.vcxproj -> F:\GitProjects\GAME_PRODUCTION\Debug\GAME1007_SDLTemplate.exe

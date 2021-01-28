@@ -55,7 +55,7 @@ void Engine::HandleEvents()
 				m_player.SetGrounded(false);
 
 			}
-			if (event.key.keysym.sym == SDLK_k && m_player.isGrounded())
+			if (event.key.keysym.sym == SDLK_k && m_player.isGrounded() && m_start % 3 * 1 == 0)
 			{
 				// Spawn a bullet
 				m_playerbullet.push_back(new Bullet({ m_player.GetRect()->x + 60, m_player.GetRect()->y + 40 }));
