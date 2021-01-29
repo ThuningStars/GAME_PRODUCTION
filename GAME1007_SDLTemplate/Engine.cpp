@@ -62,9 +62,13 @@ void Engine::HandleEvents()
 			{
 				m_player.SetAccelY(-JUMPFORCE);
 				m_player.SetGrounded(false);
+
+				// change animation to running
+				m_player.SetRunning(true);
 			}
 
 		case SDL_KEYUP:
+			// change animation to idle
 			m_player.SetRunning(false);
 		}
 	}
@@ -120,12 +124,16 @@ void Engine::Update()
 	if (KeyDown(SDL_SCANCODE_A))
 	{
 		m_player.SetAccelX(-1.0);
+
+		// change animation to running
 		m_player.SetRunning(true);
 	}
 
 	else if (KeyDown(SDL_SCANCODE_D))
 	{
 		m_player.SetAccelX(1.0);
+
+		// change animation to running
 		m_player.SetRunning(true);
 	}
 	
@@ -154,7 +162,8 @@ void Engine::Render()
 		//SDL_RenderCopyEx(m_pRenderer, m_playerRunTexture, m_player.GetSrcRect(), m_player.GetDstRect(), 0, NULL, flip);
 		m_player.Render(m_playerRunTexture, m_player, flip);
 	}
-	
+
+	// flip the sprites face to another side
 	if (KeyDown(SDL_SCANCODE_A))
 	{
 		flip = SDL_FLIP_HORIZONTAL;

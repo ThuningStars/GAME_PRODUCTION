@@ -41,9 +41,24 @@ void PlatformPlayer::Update()
 	// Reset acceleration.
 	m_accelerationX = m_accelerationY = 0.0;
 
+	// Player animation controller
 	if(m_running == false)
 	{
 		m_timer++;
+		if (FPS / m_timer == 6)
+		{
+			m_timer = 0;
+			m_srcRect.x += 198;
+		}
+
+
+		if (m_srcRect.x == 990)
+			m_srcRect.x = 0;
+	}
+	else
+	{
+		m_timer++;
+		
 		if (FPS / m_timer == 6)
 		{
 			m_timer = 0;
