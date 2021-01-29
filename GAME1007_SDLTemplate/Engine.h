@@ -28,6 +28,7 @@ private: // private properties.
 	}; //Position X and y, width and height 
 	PlatformPlayer m_player;
 	vector<Bullet*> m_playerbullet;
+	vector<LeftBullet*> m_playerleftbullet;
 
 private: // private method prototypes.
 	int Init(const char* title, int xPos, int yPos, int width, int height, int flags);

@@ -94,4 +94,48 @@ public:
 
 };
 
+class LeftBullet : public Sprite
+{
+private:
+	SDL_Rect m_dst; // Source rectangle
+	SDL_Rect m_rect; //SDL_Rect m_dst = {0,0,16,16};
+public:
+
+	LeftBullet(SDL_Point spawnLoc = { 512, 384 })
+	{
+		cout << "Constructing Bullet at " << &(*this) << endl;
+		this->m_rect.x = spawnLoc.x;
+		this->m_rect.y = spawnLoc.y;
+		this->m_rect.w = 8;
+		this->m_rect.h = 8;
+
+	}
+	~LeftBullet()
+	{
+		cout << "De-allocating Bullet at " << &(*this) << endl;
+	}
+
+	void SetLoc(SDL_Point newloc)
+	{
+		m_rect.x = newloc.x;
+		m_rect.y = newloc.y;
+	}
+
+	void Update()
+	{
+		this->m_rect.x -= 5;
+	}
+
+	void Render(SDL_Renderer* rend)
+	{
+		SDL_SetRenderDrawColor(rend, 0, 0, 255, 255);
+		SDL_RenderFillRect(rend, &m_rect);
+
+	}
+
+	SDL_Rect* GetRekt() { return &m_rect; }; // Source rectangle
+
+
+};
+
 #endif

@@ -1,9 +1,12 @@
 ﻿  Engine.cpp
-F:\GitProjects\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(88,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-F:\GitProjects\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(94,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-F:\GitProjects\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(100,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-F:\GitProjects\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(106,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-F:\GitProjects\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(128,20): warning C4018: '<': signed/unsigned mismatch
-F:\GitProjects\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(154,20): warning C4018: '<': signed/unsigned mismatch
-F:\GitProjects\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(200,20): warning C4018: '<': signed/unsigned mismatch
+F:\GitProjects\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(95,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+F:\GitProjects\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(101,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+F:\GitProjects\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(107,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+F:\GitProjects\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(113,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+F:\GitProjects\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(135,20): warning C4018: '<': signed/unsigned mismatch
+F:\GitProjects\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(151,21): warning C4018: '<': signed/unsigned mismatch
+F:\GitProjects\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(176,20): warning C4018: '<': signed/unsigned mismatch
+F:\GitProjects\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(178,20): warning C4018: '<': signed/unsigned mismatch
+F:\GitProjects\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(224,20): warning C4018: '<': signed/unsigned mismatch
+F:\GitProjects\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(231,20): warning C4018: '<': signed/unsigned mismatch
   GAME1007_SDLTemplate.vcxproj -> F:\GitProjects\GAME_PRODUCTION\Debug\GAME1007_SDLTemplate.exe

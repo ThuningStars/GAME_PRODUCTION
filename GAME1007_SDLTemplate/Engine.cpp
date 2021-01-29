@@ -55,12 +55,19 @@ void Engine::HandleEvents()
 				m_player.SetGrounded(false);
 
 			}
-			if (event.key.keysym.sym == SDLK_k && m_player.isGrounded() && m_start % 3 * 1 == 0)
+			if (event.key.keysym.sym == SDLK_l && m_start % 2 * 1 == 0)
 			{
-				// Spawn a bullet
+				// Spawn a right bullet
 				m_playerbullet.push_back(new Bullet({ m_player.GetRect()->x + 60, m_player.GetRect()->y + 40 }));
 				m_playerbullet.shrink_to_fit();
 				cout << "New bullet vector capacity: " << m_playerbullet.capacity() << endl;
+			}
+			if (event.key.keysym.sym == SDLK_k  && m_start % 2 * 1 == 0)
+			{
+				// Spawn a left bullet
+				m_playerleftbullet.push_back(new LeftBullet({ m_player.GetRect()->x + 0, m_player.GetRect()->y + 40 }));
+				m_playerleftbullet.shrink_to_fit();
+				cout << "New bullet vector capacity: " << m_playerleftbullet.capacity() << endl;
 			}
 		
 		}
@@ -140,6 +147,21 @@ void Engine::Update()
 				break;
 			}
 		}
+
+		for (int i = 0; i < m_playerleftbullet.size(); i++)
+			m_playerleftbullet[i]->Update();
+	
+		for (unsigned i = 0; i < m_playerleftbullet.size(); i++)
+		{
+			if (m_playerleftbullet[i]->GetRekt()->x <= 0)
+			{
+				delete m_playerleftbullet[i];
+				m_playerleftbullet[i] = nullptr;
+				m_playerleftbullet.erase(m_playerleftbullet.begin() + i);
+				m_playerleftbullet.shrink_to_fit();
+				break;
+			}
+		}
 }
 
 void Engine::Render()
@@ -153,6 +175,8 @@ void Engine::Render()
 	m_player.Render();
 	for (int i = 0; i < m_playerbullet.size(); i++)
 		m_playerbullet[i]->Render(m_pRenderer);
+	for (int i = 0; i < m_playerleftbullet.size(); i++)
+		m_playerleftbullet[i]->Render(m_pRenderer);
 	SDL_RenderPresent(m_pRenderer); // Flip buffers - send data to window.
 	// Any drawing here...
 
@@ -204,6 +228,13 @@ void Engine::Clean()
 	}
 	m_playerbullet.clear();
 	m_playerbullet.shrink_to_fit();
+	for (int i = 0; i < m_playerleftbullet.size(); i++)
+	{
+		delete m_playerleftbullet[i]; // Flag for reallocation
+		m_playerleftbullet[i] = nullptr;
+	}
+	m_playerleftbullet.clear();
+	m_playerleftbullet.shrink_to_fit();
 	SDL_DestroyRenderer(m_pRenderer);
 	SDL_DestroyWindow(m_pWindow);
 	SDL_Quit();
