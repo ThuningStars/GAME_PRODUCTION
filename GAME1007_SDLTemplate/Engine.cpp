@@ -1,5 +1,7 @@
 #include "Engine.h"
 
+#include <SDL_image.h>
+
 int Engine::Init(const char* title, int xPos, int yPos, int width, int height, int flags)
 {
 	cout << "Initializing engine..." << endl;
@@ -17,6 +19,10 @@ int Engine::Init(const char* title, int xPos, int yPos, int width, int height, i
 			{
 				// Initialize subsystems later...
 				cout << "Third pass." << endl;
+				if (IMG_Init(IMG_INIT_PNG | IMG_INIT_JPG) != 0)
+				{
+					m_pTexture = IMG_LoadTexture(m_pRenderer, "assets/player/Another_idle.png");
+				}
 			}
 			else return false; // Renderer creation failed.
 		}
@@ -26,6 +32,8 @@ int Engine::Init(const char* title, int xPos, int yPos, int width, int height, i
 	m_fps = (Uint32)round(1.0 / (double)FPS * 1000); // Converts FPS into milliseconds, e.g. 16.67
 	m_keystates = SDL_GetKeyboardState(nullptr);
 	m_player.Init(m_pRenderer);
+	m_enemy.Init(m_pRenderer);
+
 	// m_player = new PlatformPlayer(m_pRenderer);
 	cout << "Initialization successful!" << endl;
 	m_running = true;
@@ -114,6 +122,7 @@ void Engine::Update()
 	else if (m_player.GetRect()->x > 1024.0) m_player.SetX(-50.0);
 	//Update the player
 	m_player.Update();
+	m_enemy.UpdateEnemy();
 	CheckCollision();
 }
 
@@ -126,6 +135,7 @@ void Engine::Render()
 	for (int i = 0; i < 5; i++)
 		SDL_RenderFillRect(m_pRenderer, &m_Platforms[i]);
 	m_player.Render();
+	m_enemy.Render();
 	SDL_RenderPresent(m_pRenderer); // Flip buffers - send data to window.
 	// Any drawing here...
 

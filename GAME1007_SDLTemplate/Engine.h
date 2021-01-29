@@ -4,7 +4,10 @@
 
 #include "SDL.h"
 #include <iostream>
+#include <vector>
+
 #include "PlatformPlayer.h"
+#include "Enemy.h"
 #define FPS 60
 #define WIDTH 1024
 #define HEIGHT 768
@@ -26,6 +29,13 @@ private: // private properties.
 
 	}; //Position X and y, width and height 
 	PlatformPlayer m_player;
+<<<<<<< HEAD
+	Enemy m_enemy;
+	
+=======
+	// Textures
+	SDL_Texture* m_pTexture;
+>>>>>>> parent of bcbb831... Revert "Animation set up"
 
 private: // private method prototypes.
 	int Init(const char* title, int xPos, int yPos, int width, int height, int flags);
