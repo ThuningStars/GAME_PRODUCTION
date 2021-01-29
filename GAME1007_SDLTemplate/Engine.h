@@ -8,6 +8,10 @@
 #define FPS 60
 #define WIDTH 1024
 #define HEIGHT 768
+#define LEVEL_WIDTH 1500
+#define LEVEL_HEIGHT 768
+
+
 using namespace std;
 
 class Engine
@@ -21,10 +25,12 @@ private: // private properties.
 	SDL_Rect m_Platforms[5] = { {100,600,100,20},//0
 								{200,500,100,20},//1
 								{300,400,100,20},//2
-								{400,500,100,20},//3
-								{0,700,1024,100},//4. Ground
+								{400,700,100,20},//3
+								{0,700,10240,100},//4. Ground
 
-	}; //Position X and y, width and height 
+	}; //Position X and y, width and height
+
+	SDL_Rect m_Camera = { 100, 0, WIDTH, HEIGHT };
 	PlatformPlayer m_player;
 
 private: // private method prototypes.
