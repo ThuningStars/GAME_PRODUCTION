@@ -6,20 +6,34 @@
 #define GRAVITY 6.0
 using namespace std;
 
-class Enemy
+class Sprite
 {
 private:
-	
-	SDL_Rect m_eRect;
-	SDL_Renderer* m_eRend;
-	
+	int m_frame = 0, 
+		m_frameMax = 60, 
+		m_sprite = 0, 
+		m_spriteMax = 8; 
 public:
-	void Init(SDL_Renderer* r);
-	~Enemy(); // Destructor
-	void UpdateEnemy();
-	void Render();
-	SDL_Rect* getRect();
-	
+	SDL_Rect m_src; // Source rectangle
+	SDL_Rect m_dst; // Destiniation rectangle
+	SDL_Rect* GetSrc();
+	SDL_Rect* GetDst();
+	void SetRect(const SDL_Rect s, const SDL_Rect d);
+	void Animate();
+	void Update();
+};
+
+class Enemy : public Sprite
+{
+private:
+	SDL_Rect m_dst; // Source rectangle
+	SDL_Rect m_rect;
+public:
+	Enemy(SDL_Point spawnLoc = { 1024, 200 });
+	~Enemy();
+	SDL_Rect* GetRect();// Source rectangle
+	void Update();
+	void Render(SDL_Renderer* rend);
 };
 
 #endif
