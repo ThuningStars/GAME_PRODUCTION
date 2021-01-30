@@ -1,2 +1,7 @@
-﻿  Enemy.cpp
-  GAME1007_SDLTemplate.vcxproj -> C:\Users\migue\Desktop\COLLEGE COURSES\Semester 2\GAME1014 Game Production 2\GAME_PRODUCTION\Debug\GAME1007_SDLTemplate.exe
+﻿  Engine.cpp
+C:\Users\russe\GBC\GAME1014_True_Proto\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(87,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\russe\GBC\GAME1014_True_Proto\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(93,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\russe\GBC\GAME1014_True_Proto\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(99,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\russe\GBC\GAME1014_True_Proto\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(105,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\russe\GBC\GAME1014_True_Proto\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(237,20): warning C4018: '<': signed/unsigned mismatch
+  GAME1007_SDLTemplate.vcxproj -> C:\Users\russe\GBC\GAME1014_True_Proto\GAME_PRODUCTION\Debug\GAME1007_SDLTemplate.exe
