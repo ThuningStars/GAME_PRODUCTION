@@ -71,14 +71,14 @@ void Engine::HandleEvents()
 			if (event.key.keysym.sym == SDLK_l && m_start % 2 * 1 == 0)
 			{
 				// Spawn a right bullet
-				m_playerbullet.push_back(new Bullet({ m_player.GetRect()->x + 60, m_player.GetRect()->y + 40 }));
+				m_playerbullet.push_back(new Bullet({ m_player.GetDstRect()->x + 60, m_player.GetDstRect()->y + 40 }));
 				m_playerbullet.shrink_to_fit();
 			}
 				cout << "New bullet vector capacity: " << m_playerbullet.capacity() << endl;
 			if (event.key.keysym.sym == SDLK_k  && m_start % 2 * 1 == 0)
 			{
 				// Spawn a left bullet
-				m_playerleftbullet.push_back(new LeftBullet({ m_player.GetRect()->x + 0, m_player.GetRect()->y + 40 }));
+				m_playerleftbullet.push_back(new LeftBullet({ m_player.GetDstRect()->x + 0, m_player.GetDstRect()->y + 40 }));
 				m_playerleftbullet.shrink_to_fit();
 				cout << "New bullet vector capacity: " << m_playerleftbullet.capacity() << endl;
 			}

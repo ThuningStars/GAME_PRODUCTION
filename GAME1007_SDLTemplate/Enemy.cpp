@@ -1,30 +1,30 @@
 #include "Enemy.h"
-void Sprite::SetRect(const SDL_Rect s, const SDL_Rect d)
-{
-		m_src = s;
-		m_dst = d;
-}
-
-SDL_Rect* Sprite::GetSrc()
-{
-	return &m_src;
-}
-
-SDL_Rect* Sprite::GetDst()
-{
-	return &m_dst;
-}
-
-void Sprite::Animate()
-{
-	if (m_frame++ % m_frameMax == 0)
-		m_src.x = m_src.w * (m_sprite++ % (m_spriteMax)); // 128 * <our sprite ctr>
-}
-
-void Sprite::Update()
-{
-	this->m_dst.x -= 2;
-}
+//void Sprite::SetRect(const SDL_Rect s, const SDL_Rect d)
+//{
+//		m_src = s;
+//		m_dst = d;
+//}
+//
+//SDL_Rect* Sprite::GetSrc()
+//{
+//	return &m_src;
+//}
+//
+//SDL_Rect* Sprite::GetDst()
+//{
+//	return &m_dst;
+//}
+//
+//void Sprite::Animate()
+//{
+//	if (m_frame++ % m_frameMax == 0)
+//		m_src.x = m_src.w * (m_sprite++ % (m_spriteMax)); // 128 * <our sprite ctr>
+//}
+//
+//void Sprite::Update()
+//{
+//	this->m_dst.x -= 2;
+//}
 
 Enemy::Enemy(SDL_Point spawnLoc)
 {

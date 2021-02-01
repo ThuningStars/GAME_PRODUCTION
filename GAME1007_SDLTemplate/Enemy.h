@@ -3,25 +3,27 @@
 #define ENEMY_H
 #include"SDL.h"
 #include <iostream>
+
+#include "PlayerBullet.h"
 #define GRAVITY 6.0
 using namespace std;
 
-class Sprite
-{
-private:
-	int m_frame = 0, 
-		m_frameMax = 60, 
-		m_sprite = 0, 
-		m_spriteMax = 8; 
-public:
-	SDL_Rect m_src; // Source rectangle
-	SDL_Rect m_dst; // Destiniation rectangle
-	SDL_Rect* GetSrc();
-	SDL_Rect* GetDst();
-	void SetRect(const SDL_Rect s, const SDL_Rect d);
-	void Animate();
-	void Update();
-};
+//class Sprite
+//{
+//private:
+//	int m_frame = 0, 
+//		m_frameMax = 60, 
+//		m_sprite = 0, 
+//		m_spriteMax = 8; 
+//public:
+//	SDL_Rect m_src; // Source rectangle
+//	SDL_Rect m_dst; // Destiniation rectangle
+//	SDL_Rect* GetSrc();
+//	SDL_Rect* GetDst();
+//	void SetRect(const SDL_Rect s, const SDL_Rect d);
+//	void Animate();
+//	void Update();
+//};
 
 class Enemy : public Sprite
 {
