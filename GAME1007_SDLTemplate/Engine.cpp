@@ -12,7 +12,7 @@ int Engine::Init(const char* title, int xPos, int yPos, int width, int height, i
 		{
 			// Create the SDL renderer...(back buffer)
 			cout << "Second pass." << endl;
-			m_pRenderer = SDL_CreateRenderer(m_pWindow, -1, NULL);
+			m_pRenderer = SDL_CreateRenderer(m_pWindow, 1, NULL);
 			if (m_pRenderer != nullptr)
 			{
 				// Initialize subsystems later...
@@ -106,19 +106,31 @@ void Engine::Update()
 {
 	//move right and left
 	if (KeyDown(SDL_SCANCODE_A))
+	{
 		m_player.SetAccelX(-1.0);
+
+	}
 	else if (KeyDown(SDL_SCANCODE_D))
-		m_player.SetAccelX(1.0);
+	m_player.SetAccelX(1.0);
 	//wrap the player
 	if (m_player.GetRect()->x < -51.0) m_player.SetX(1024.0);
 	else if (m_player.GetRect()->x > 1024.0) m_player.SetX(-50.0);
 	//Update the player
 	m_player.Update();
+	if (m_player.GetRect()->x > (WIDTH / 3))
+	{
+		m_Camera.x -= m_player.GetVelX();
+	}
 	CheckCollision();
+
+	cout << m_player.GetRect()->x << endl<<m_Camera.x<<endl;
+
 }
 
 void Engine::Render()
 {
+
+
 	SDL_SetRenderDrawColor(m_pRenderer, 64, 128, 255, 255);
 	SDL_RenderClear(m_pRenderer);
 	//Render Platforms
@@ -126,9 +138,13 @@ void Engine::Render()
 	for (int i = 0; i < 5; i++)
 		SDL_RenderFillRect(m_pRenderer, &m_Platforms[i]);
 	m_player.Render();
+	SDL_RenderSetViewport(m_pRenderer, &m_Camera);
 	SDL_RenderPresent(m_pRenderer); // Flip buffers - send data to window.
 	// Any drawing here...
-
+	
+	
+//	SDL_RenderPresent(m_pRenderer);
+	//SDL_RenderPresent(m_pRenderer);
 	
 }
 
