@@ -126,7 +126,7 @@ void Engine::CheckCollision()
 		}
 
 		// If the player gets hit they lose health and can't get hit again unti the cooldown ends
-		if (SDL_HasIntersection(m_player.GetRect(), m_enemyCreation[i]->GetRect()) && coolDown == 0)
+		if (SDL_HasIntersection(m_player.GetDstRect(), m_enemyCreation[i]->GetRect()) && coolDown == 0)
 		{
 			cout << "Hit!!" << endl << endl;
 			playerHealth--;
