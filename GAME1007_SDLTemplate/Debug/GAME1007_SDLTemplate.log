@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 ﻿  Engine.cpp
 C:\Users\HP\Desktop\Game Programming Semester 2\Game Production II - GAME1014\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(79,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 C:\Users\HP\Desktop\Game Programming Semester 2\Game Production II - GAME1014\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(85,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
@@ -14,3 +15,7 @@ E:\GAME Programing\Winter 2021\Game 1014 Production\GAME_PRODUCTION\GAME1007_SDL
 E:\GAME Programing\Winter 2021\Game 1014 Production\GAME_PRODUCTION\GAME1007_SDLTemplate\PlatformPlayer.cpp(114,52): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
   GAME1007_SDLTemplate.vcxproj -> E:\GAME Programing\Winter 2021\Game 1014 Production\GAME_PRODUCTION\Debug\GAME1007_SDLTemplate.exe
 >>>>>>> Animation_Betty
+=======
+﻿  Enemy.cpp
+  GAME1007_SDLTemplate.vcxproj -> C:\Users\migue\Desktop\COLLEGE COURSES\Semester 2\GAME1014 Game Production 2\GAME_PRODUCTION\Debug\GAME1007_SDLTemplate.exe
+>>>>>>> EnemyClass_Miguel

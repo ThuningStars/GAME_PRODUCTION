@@ -4,7 +4,10 @@
 
 #include "SDL.h"
 #include <iostream>
+#include <vector>
+
 #include "PlatformPlayer.h"
+#include "Enemy.h"
 #define FPS 60
 #define WIDTH 1024
 #define HEIGHT 768
@@ -34,6 +37,13 @@ private: // private properties.
 	PlatformPlayer m_player;
 	SDL_Texture* m_playerIdleTexture, *m_playerRunTexture;
 	SDL_RendererFlip flip = SDL_FLIP_NONE;
+	Sprite m_enemy;
+	vector<Enemy*> m_enemyCreation;
+	int m_EnemyTimer;
+
+	// Textures
+	SDL_Texture* m_pTexture;
+
 
 private: // private method prototypes.
 	int Init(const char* title, int xPos, int yPos, int width, int height, int flags);

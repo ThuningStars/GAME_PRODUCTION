@@ -35,7 +35,6 @@ int Engine::Init(const char* title, int xPos, int yPos, int width, int height, i
 	m_keystates = SDL_GetKeyboardState(nullptr);
 	
 	m_player.Init(m_pRenderer);
-	// m_player = new PlatformPlayer(m_pRenderer);
 	cout << "Initialization successful!" << endl;
 	m_running = true;
 	return true;
@@ -141,10 +140,40 @@ void Engine::Update()
 	if (m_player.GetDstRect()->x < -51.0) m_player.SetX(1024.0);
 	else if (m_player.GetDstRect()->x > 1024.0) m_player.SetX(-50.0);
 	//Update the player
+	/*m_player.Update();*/
 	m_player.Update();
 	if (m_player.GetDstRect()->x > (WIDTH / 3))
 	{
 		m_Camera.x -= m_player.GetVelX();
+	}
+	m_EnemyTimer++;
+
+	if (m_EnemyTimer == 150)
+	{
+		
+		m_enemyCreation.push_back(new Enemy({ 1024,(650) }));
+		m_enemyCreation.shrink_to_fit();
+		cout << " New Enemy vector capacity " <<m_enemyCreation.capacity() << endl;
+		m_EnemyTimer = 0;
+	for (unsigned i = 0; i < m_enemyCreation.size(); i++) // size() is actual filled numbers of elements
+	}
+	{
+		m_enemyCreation[i]->Update();
+
+			// Enemy delete
+			for (unsigned i = 0; i < m_enemyCreation.size(); i++) // size() is actual filled numbers of elements
+			{
+				if (m_enemyCreation[i]->GetRect()->x < -100)
+
+				{
+					m_enemyCreation[i] = nullptr; // get rid of the dangling pointer
+					delete m_enemyCreation[i]; // flag for reallocation
+					m_enemyCreation.erase(m_enemyCreation.begin() + i);
+					m_enemyCreation.shrink_to_fit();
+					cout << " Enemy Deleted \n";
+
+				}
+			}
 	}
 	CheckCollision();
 
@@ -162,6 +191,10 @@ void Engine::Render()
 	SDL_SetRenderDrawColor(m_pRenderer, 192, 64, 0, 255);
 	for (int i = 0; i < 5; i++)
 		SDL_RenderFillRect(m_pRenderer, &m_Platforms[i]);
+	for (unsigned i = 0; i < m_enemyCreation.size(); i++) // size() is actual filled numbers of elements
+	{
+		m_enemyCreation[i]->Render(m_pRenderer);
+	}
 	if(m_player.getRunning() == false)
 	{
 		m_player.Render(m_playerIdleTexture, m_player, flip);
@@ -230,6 +263,13 @@ int Engine::Run()
 void Engine::Clean()
 {
 	cout << "Cleaning engine..." << endl;
+	for (int i = 0; i < m_enemyCreation.size(); i++)
+	{
+		delete m_enemyCreation[i]; // Flag for reallocation 
+		m_enemyCreation[i] = nullptr;
+	}
+	m_enemyCreation.clear();
+	m_enemyCreation.shrink_to_fit();
 	SDL_DestroyRenderer(m_pRenderer);
 	SDL_DestroyWindow(m_pWindow);
 	SDL_Quit();
