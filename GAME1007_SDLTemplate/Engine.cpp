@@ -142,13 +142,13 @@ void Engine::Update()
 	else if (m_player.GetDstRect()->x > 1024.0) m_player.SetX(-50.0);
 	//Update the player
 	m_player.Update();
-	if (m_player.GetRect()->x > (WIDTH / 3))
+	if (m_player.GetDstRect()->x > (WIDTH / 3))
 	{
 		m_Camera.x -= m_player.GetVelX();
 	}
 	CheckCollision();
 
-	cout << m_player.GetRect()->x << endl<<m_Camera.x<<endl;
+	cout << m_player.GetDstRect()->x << endl<<m_Camera.x<<endl;
 
 }
 
