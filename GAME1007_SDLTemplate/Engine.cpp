@@ -146,6 +146,8 @@ void Engine::Update()
 	{
 		m_Camera.x -= m_player.GetVelX();
 	}
+
+	
 	m_EnemyTimer++;
 
 	if (m_EnemyTimer == 150)
@@ -155,26 +157,27 @@ void Engine::Update()
 		m_enemyCreation.shrink_to_fit();
 		cout << " New Enemy vector capacity " <<m_enemyCreation.capacity() << endl;
 		m_EnemyTimer = 0;
+	}
+	for (unsigned i = 0; i < m_enemyCreation.size(); i++) // size() is actual filled numbers of elements
+	{
+		m_enemyCreation[i]->Update();
+
+		// Enemy delete
 		for (unsigned i = 0; i < m_enemyCreation.size(); i++) // size() is actual filled numbers of elements
 		{
-			m_enemyCreation[i]->Update();
+			if (m_enemyCreation[i]->GetRect()->x < -100)
 
-			// Enemy delete
-			for (unsigned i = 0; i < m_enemyCreation.size(); i++) // size() is actual filled numbers of elements
 			{
-				if (m_enemyCreation[i]->GetRect()->x < -100)
+				m_enemyCreation[i] = nullptr; // get rid of the dangling pointer
+				delete m_enemyCreation[i]; // flag for reallocation
+				m_enemyCreation.erase(m_enemyCreation.begin() + i);
+				m_enemyCreation.shrink_to_fit();
+				cout << " Enemy Deleted \n";
 
-				{
-					m_enemyCreation[i] = nullptr; // get rid of the dangling pointer
-					delete m_enemyCreation[i]; // flag for reallocation
-					m_enemyCreation.erase(m_enemyCreation.begin() + i);
-					m_enemyCreation.shrink_to_fit();
-					cout << " Enemy Deleted \n";
-
-				}
 			}
 		}
 	}
+	
 	CheckCollision();
 
 	cout << m_player.GetDstRect()->x << endl<<m_Camera.x<<endl;
