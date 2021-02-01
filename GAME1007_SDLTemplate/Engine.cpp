@@ -155,10 +155,9 @@ void Engine::Update()
 		m_enemyCreation.shrink_to_fit();
 		cout << " New Enemy vector capacity " <<m_enemyCreation.capacity() << endl;
 		m_EnemyTimer = 0;
-	for (unsigned i = 0; i < m_enemyCreation.size(); i++) // size() is actual filled numbers of elements
-	}
-	{
-		m_enemyCreation[i]->Update();
+		for (unsigned i = 0; i < m_enemyCreation.size(); i++) // size() is actual filled numbers of elements
+		{
+			m_enemyCreation[i]->Update();
 
 			// Enemy delete
 			for (unsigned i = 0; i < m_enemyCreation.size(); i++) // size() is actual filled numbers of elements
@@ -174,6 +173,7 @@ void Engine::Update()
 
 				}
 			}
+		}
 	}
 	CheckCollision();
 
