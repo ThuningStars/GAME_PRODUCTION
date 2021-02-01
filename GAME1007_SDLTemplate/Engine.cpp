@@ -2,6 +2,9 @@
 
 #include <SDL_image.h>
 
+int playerHealth = 3;
+int coolDown = 0;
+
 int Engine::Init(const char* title, int xPos, int yPos, int width, int height, int flags)
 {
 	cout << "Initializing engine..." << endl;
@@ -113,7 +116,23 @@ void Engine::CheckCollision()
 			}
 
 		}
+	}
+	for (unsigned i = 0; i < m_enemyCreation.size(); i++)
+	{
+		// Cooldown feature
+		if (coolDown > 0 && coolDown != 0)
+		{
+			coolDown--;
+		}
 
+		// If the player gets hit they lose health and can't get hit again unti the cooldown ends
+		if (SDL_HasIntersection(m_player.GetRect(), m_enemyCreation[i]->GetRect()) && coolDown == 0)
+		{
+			cout << "Hit!!" << endl << endl;
+			playerHealth--;
+			coolDown = 300;
+			cout << "You have " << playerHealth << " left" << endl << endl;
+		}
 	}
 }
 
@@ -177,7 +196,12 @@ void Engine::Update()
 			}
 		}
 	}
-	
+	// Player respawns when health is 0 or below 0
+	if (playerHealth == 0 || playerHealth < 0)
+	{
+		playerHealth = 3;
+		m_player.Init(m_pRenderer);
+	}
 	CheckCollision();
 
 	cout << m_player.GetDstRect()->x << endl<<m_Camera.x<<endl;
