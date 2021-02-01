@@ -7,6 +7,7 @@
 #include <vector>
 
 #include "PlatformPlayer.h"
+#include "PlayerBullet.h"
 #include "Enemy.h"
 #define FPS 60
 #define WIDTH 1024
@@ -35,6 +36,8 @@ private: // private properties.
 
 	SDL_Rect m_Camera = { 100, 0, WIDTH, HEIGHT };
 	PlatformPlayer m_player;
+	vector<Bullet*> m_playerbullet;
+	vector<LeftBullet*> m_playerleftbullet;
 	SDL_Texture* m_playerIdleTexture, *m_playerRunTexture;
 	SDL_RendererFlip flip = SDL_FLIP_NONE;
 	Sprite m_enemy;

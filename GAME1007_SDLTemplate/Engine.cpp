@@ -68,6 +68,21 @@ void Engine::HandleEvents()
 				// change animation to running
 				m_player.SetRunning(true);
 			}
+			if (event.key.keysym.sym == SDLK_l && m_start % 2 * 1 == 0)
+			{
+				// Spawn a right bullet
+				m_playerbullet.push_back(new Bullet({ m_player.GetRect()->x + 60, m_player.GetRect()->y + 40 }));
+				m_playerbullet.shrink_to_fit();
+			}
+				cout << "New bullet vector capacity: " << m_playerbullet.capacity() << endl;
+			if (event.key.keysym.sym == SDLK_k  && m_start % 2 * 1 == 0)
+			{
+				// Spawn a left bullet
+				m_playerleftbullet.push_back(new LeftBullet({ m_player.GetRect()->x + 0, m_player.GetRect()->y + 40 }));
+				m_playerleftbullet.shrink_to_fit();
+				cout << "New bullet vector capacity: " << m_playerleftbullet.capacity() << endl;
+			}
+		
 
 		case SDL_KEYUP:
 			// change animation to idle
@@ -206,6 +221,37 @@ void Engine::Update()
 
 	cout << m_player.GetDstRect()->x << endl<<m_Camera.x<<endl;
 
+
+	for (int i = 0; i < m_playerbullet.size(); i++)
+		m_playerbullet[i]->Update();
+
+	// Check for bullets going off - screen...
+		for (unsigned i = 0; i < m_playerbullet.size(); i++)
+		{
+			if (m_playerbullet[i]->GetRekt()->x >= WIDTH)
+			{
+				delete m_playerbullet[i];
+				m_playerbullet[i] = nullptr;
+				m_playerbullet.erase(m_playerbullet.begin() + i);
+				m_playerbullet.shrink_to_fit();
+				break;
+			}
+		}
+
+		for (int i = 0; i < m_playerleftbullet.size(); i++)
+			m_playerleftbullet[i]->Update();
+	
+		for (unsigned i = 0; i < m_playerleftbullet.size(); i++)
+		{
+			if (m_playerleftbullet[i]->GetRekt()->x <= 0)
+			{
+				delete m_playerleftbullet[i];
+				m_playerleftbullet[i] = nullptr;
+				m_playerleftbullet.erase(m_playerleftbullet.begin() + i);
+				m_playerleftbullet.shrink_to_fit();
+				break;
+			}
+		}
 }
 
 void Engine::Render()
@@ -218,6 +264,10 @@ void Engine::Render()
 	SDL_SetRenderDrawColor(m_pRenderer, 192, 64, 0, 255);
 	for (int i = 0; i < 5; i++)
 		SDL_RenderFillRect(m_pRenderer, &m_Platforms[i]);
+	for (int i = 0; i < m_playerbullet.size(); i++)
+		m_playerbullet[i]->Render(m_pRenderer);
+	for (int i = 0; i < m_playerleftbullet.size(); i++)
+		m_playerleftbullet[i]->Render(m_pRenderer);
 	for (unsigned i = 0; i < m_enemyCreation.size(); i++) // size() is actual filled numbers of elements
 	{
 		m_enemyCreation[i]->Render(m_pRenderer);
@@ -297,6 +347,20 @@ void Engine::Clean()
 	}
 	m_enemyCreation.clear();
 	m_enemyCreation.shrink_to_fit();
+	for (int i = 0; i < m_playerbullet.size(); i++)
+	{
+		delete m_playerbullet[i]; // Flag for reallocation
+		m_playerbullet[i] = nullptr;
+	}
+	m_playerbullet.clear();
+	m_playerbullet.shrink_to_fit();
+	for (int i = 0; i < m_playerleftbullet.size(); i++)
+	{
+		delete m_playerleftbullet[i]; // Flag for reallocation
+		m_playerleftbullet[i] = nullptr;
+	}
+	m_playerleftbullet.clear();
+	m_playerleftbullet.shrink_to_fit();
 	SDL_DestroyRenderer(m_pRenderer);
 	SDL_DestroyWindow(m_pWindow);
 	SDL_Quit();

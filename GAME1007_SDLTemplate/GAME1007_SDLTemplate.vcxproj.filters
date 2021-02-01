@@ -35,6 +35,9 @@
     <ClInclude Include="PlatformPlayer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="PlayerBullet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="Enemy.h">
       <Filter>Header Files</Filter>
     </ClInclude>
