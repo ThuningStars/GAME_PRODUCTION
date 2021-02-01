@@ -1,10 +1,13 @@
 #include "PlatformPlayer.h"
 #include <algorithm>
 
+#include "Engine.h"
+
 void PlatformPlayer::Init(SDL_Renderer* r)
 {
-	m_rend = r;
-	m_rect = { 462,0,50,100 };
+	m_pRend = r;
+	m_srcRect = { 0,0,198,261 };
+	m_dstRect = { 462,0,66,87 };
 	m_grounded = true;
 
 	m_accelerationX = m_accelerationY = m_velX = m_velY = 0.0;
@@ -14,9 +17,14 @@ void PlatformPlayer::Init(SDL_Renderer* r)
 	m_drag = 0.88;
 }
 
-SDL_Rect* PlatformPlayer::GetRect()
+SDL_Rect* PlatformPlayer::GetDstRect()
 {
-	return &m_rect;
+	return &m_dstRect;
+}
+
+SDL_Rect* PlatformPlayer::GetSrcRect()
+{
+	return &m_srcRect;
 }
 
 void PlatformPlayer::Update()
@@ -25,19 +33,51 @@ void PlatformPlayer::Update()
 	m_velX += m_accelerationX;
 	m_velX *= (m_grounded ? m_drag : 1.0);
 	m_velX = std::min(std::max(m_velX, -m_maxVelX), m_maxVelX);
-	m_rect.x += (int)m_velX;
+	m_dstRect.x += (int)m_velX;
 	// Y axis
 	m_velY += m_accelerationY + m_gravity;
 	m_velY = std::min(std::max(m_velY, -m_maxVelY), (m_gravity*3.0));
-	m_rect.y += (int)m_velY;
+	m_dstRect.y += (int)m_velY;
 	// Reset acceleration.
 	m_accelerationX = m_accelerationY = 0.0;
+
+	// Player animation controller
+	if(m_running == false)
+	{
+		m_timer++;
+		if (FPS / m_timer == 6)
+		{
+			m_timer = 0;
+			m_srcRect.x += 198;
+		}
+
+
+		if (m_srcRect.x == 990)
+			m_srcRect.x = 0;
+	}
+	else
+	{
+		m_timer++;
+		
+		if (FPS / m_timer == 6)
+		{
+			m_timer = 0;
+			m_srcRect.x += 198;
+		}
+
+
+		if (m_srcRect.x == 990)
+			m_srcRect.x = 0;
+	}
+	
 }
 
-void PlatformPlayer::Render()
+void PlatformPlayer::Render(SDL_Texture* texture, PlatformPlayer player, SDL_RendererFlip flip)
 {
-	SDL_SetRenderDrawColor(m_rend, 255, 255, 255, 255);
-	SDL_RenderFillRect(m_rend, GetRect());
+	//SDL_SetRenderDrawColor(m_rend, 255, 255, 255, 255);
+	//SDL_RenderFillRect(m_rend, GetRect());
+	SDL_RenderCopyEx(m_pRend, texture, &player.m_srcRect, &player.m_dstRect, m_angle, m_pCenter, flip);
+
 }
 
 void PlatformPlayer::Stop()
@@ -54,7 +94,14 @@ void PlatformPlayer::SetAccelX(double a) { m_accelerationX = a; }
 
 void PlatformPlayer::SetAccelY(double a) { m_accelerationY = a; }
 
+void PlatformPlayer::SetRunning(bool r)
+{
+	m_running = r;
+}
+
 bool PlatformPlayer::isGrounded() { return m_grounded; }
+
+bool PlatformPlayer::getRunning() { return m_running; }
 
 void PlatformPlayer::SetGrounded(bool g) { m_grounded = g; }
 
@@ -62,7 +109,6 @@ double PlatformPlayer::GetVelX() { return m_velX; }
 
 double PlatformPlayer::GetVelY() { return m_velY; }
 
-void PlatformPlayer::SetX(float x) { m_rect.x = x; }
+void PlatformPlayer::SetX(float x) { m_dstRect.x = x; }
 
-void PlatformPlayer::SetY(float y) { m_rect.y = y; }
-
+void PlatformPlayer::SetY(float y) { m_dstRect.y = y; }

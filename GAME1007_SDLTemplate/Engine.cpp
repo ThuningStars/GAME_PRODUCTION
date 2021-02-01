@@ -1,5 +1,7 @@
 #include "Engine.h"
 
+#include <SDL_image.h>
+
 int Engine::Init(const char* title, int xPos, int yPos, int width, int height, int flags)
 {
 	cout << "Initializing engine..." << endl;
@@ -17,6 +19,12 @@ int Engine::Init(const char* title, int xPos, int yPos, int width, int height, i
 			{
 				// Initialize subsystems later...
 				cout << "Third pass." << endl;
+				if (IMG_Init(IMG_INIT_PNG | IMG_INIT_JPG) != 0)
+				{
+					m_playerIdleTexture = IMG_LoadTexture(m_pRenderer, "../assets/player/idle.png");
+					m_playerRunTexture = IMG_LoadTexture(m_pRenderer, "../assets/player/run.png");
+				}
+				else return false;
 			}
 			else return false; // Renderer creation failed.
 		}
@@ -25,6 +33,7 @@ int Engine::Init(const char* title, int xPos, int yPos, int width, int height, i
 	else return false; // initalization failed.
 	m_fps = (Uint32)round(1.0 / (double)FPS * 1000); // Converts FPS into milliseconds, e.g. 16.67
 	m_keystates = SDL_GetKeyboardState(nullptr);
+	
 	m_player.Init(m_pRenderer);
 	// m_player = new PlatformPlayer(m_pRenderer);
 	cout << "Initialization successful!" << endl;
@@ -53,7 +62,14 @@ void Engine::HandleEvents()
 			{
 				m_player.SetAccelY(-JUMPFORCE);
 				m_player.SetGrounded(false);
+
+				// change animation to running
+				m_player.SetRunning(true);
 			}
+
+		case SDL_KEYUP:
+			// change animation to idle
+			m_player.SetRunning(false);
 		}
 	}
 }
@@ -69,28 +85,28 @@ void Engine::CheckCollision()
 {
 	for (int i = 0; i < 5; i++)
 	{
-		if (SDL_HasIntersection(m_player.GetRect(), &m_Platforms[i]))
+		if (SDL_HasIntersection(m_player.GetDstRect(), &m_Platforms[i]))
 		{
-			if( (m_player.GetRect()->y + m_player.GetRect()->h) - (float)m_player.GetVelY() <= m_Platforms[i].y )
+			if( (m_player.GetDstRect()->y + m_player.GetDstRect()->h) - (float)m_player.GetVelY() <= m_Platforms[i].y )
 			{
 				//colliding with the top side of platforms.
 				m_player.SetGrounded(true);
 				m_player.StopY();
-				m_player.SetY(m_Platforms[i].y - m_player.GetRect()->h);
+				m_player.SetY(m_Platforms[i].y - m_player.GetDstRect()->h);
 			}
-			else if (m_player.GetRect()->y - (float)m_player.GetVelY() >= (m_Platforms[i].y + m_Platforms[i].h ))
+			else if (m_player.GetDstRect()->y - (float)m_player.GetVelY() >= (m_Platforms[i].y + m_Platforms[i].h ))
 			{
 				//colliding with the bottom side of platforms.
 				m_player.StopY();
 				m_player.SetY(m_Platforms[i].y + m_Platforms[i].h);
 			}
-			else if ((m_player.GetRect()->x + m_player.GetRect()->w) - (float)m_player.GetVelX() <= m_Platforms[i].x )
+			else if ((m_player.GetDstRect()->x + m_player.GetDstRect()->w) - (float)m_player.GetVelX() <= m_Platforms[i].x )
 			{
 				//colliding with the left side of platforms.
 				m_player.StopX();
 				m_player.SetX(m_Platforms[i].x - m_Platforms[i].w);
 			}
-			else if (m_player.GetRect()->x - (float)m_player.GetVelX() >= (m_Platforms[i].x + m_Platforms[i].w))
+			else if (m_player.GetDstRect()->x - (float)m_player.GetVelX() >= (m_Platforms[i].x + m_Platforms[i].w))
 			{
 				//colliding with the right side of platforms.
 				m_player.StopX();
@@ -108,13 +124,22 @@ void Engine::Update()
 	if (KeyDown(SDL_SCANCODE_A))
 	{
 		m_player.SetAccelX(-1.0);
+		m_player.SetRunning(true);
+		// change animation to running
 
 	}
+
 	else if (KeyDown(SDL_SCANCODE_D))
-	m_player.SetAccelX(1.0);
+	{
+		m_player.SetAccelX(1.0);
+
+		// change animation to running
+		m_player.SetRunning(true);
+	}
+	
 	//wrap the player
-	if (m_player.GetRect()->x < -51.0) m_player.SetX(1024.0);
-	else if (m_player.GetRect()->x > 1024.0) m_player.SetX(-50.0);
+	if (m_player.GetDstRect()->x < -51.0) m_player.SetX(1024.0);
+	else if (m_player.GetDstRect()->x > 1024.0) m_player.SetX(-50.0);
 	//Update the player
 	m_player.Update();
 	if (m_player.GetRect()->x > (WIDTH / 3))
@@ -137,8 +162,27 @@ void Engine::Render()
 	SDL_SetRenderDrawColor(m_pRenderer, 192, 64, 0, 255);
 	for (int i = 0; i < 5; i++)
 		SDL_RenderFillRect(m_pRenderer, &m_Platforms[i]);
-	m_player.Render();
+	if(m_player.getRunning() == false)
+	{
+		m_player.Render(m_playerIdleTexture, m_player, flip);
+	}
+	else
+	{
+		//SDL_RenderCopyEx(m_pRenderer, m_playerRunTexture, m_player.GetSrcRect(), m_player.GetDstRect(), 0, NULL, flip);
+		m_player.Render(m_playerRunTexture, m_player, flip);
+	}
+
 	SDL_RenderSetViewport(m_pRenderer, &m_Camera);
+	// flip the sprites face to another side
+	if (KeyDown(SDL_SCANCODE_A))
+	{
+		flip = SDL_FLIP_HORIZONTAL;
+	}
+	if (KeyDown(SDL_SCANCODE_D))
+	{
+		flip = SDL_FLIP_NONE;
+	}
+	
 	SDL_RenderPresent(m_pRenderer); // Flip buffers - send data to window.
 	// Any drawing here...
 	
