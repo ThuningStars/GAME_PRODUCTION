@@ -1,46 +1,19 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-﻿  Engine.cpp
-C:\Users\HP\Desktop\Game Programming Semester 2\Game Production II - GAME1014\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(112,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\HP\Desktop\Game Programming Semester 2\Game Production II - GAME1014\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(118,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\HP\Desktop\Game Programming Semester 2\Game Production II - GAME1014\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(124,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\HP\Desktop\Game Programming Semester 2\Game Production II - GAME1014\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(130,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\HP\Desktop\Game Programming Semester 2\Game Production II - GAME1014\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(226,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\HP\Desktop\Game Programming Semester 2\Game Production II - GAME1014\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(242,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\HP\Desktop\Game Programming Semester 2\Game Production II - GAME1014\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(268,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\HP\Desktop\Game Programming Semester 2\Game Production II - GAME1014\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(270,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\HP\Desktop\Game Programming Semester 2\Game Production II - GAME1014\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(344,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\HP\Desktop\Game Programming Semester 2\Game Production II - GAME1014\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(351,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\HP\Desktop\Game Programming Semester 2\Game Production II - GAME1014\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(358,20): warning C4018: '<': signed/unsigned mismatch
-  GAME1007_SDLTemplate.vcxproj -> C:\Users\HP\Desktop\Game Programming Semester 2\Game Production II - GAME1014\GAME_PRODUCTION\Debug\GAME1007_SDLTemplate.exe
-=======
 ﻿  Enemy.cpp
   Engine.cpp
-C:\Users\Ryan Gillespie\Documents\GitHub\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(114,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Ryan Gillespie\Documents\GitHub\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(120,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Ryan Gillespie\Documents\GitHub\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(126,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Ryan Gillespie\Documents\GitHub\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(132,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Ryan Gillespie\Documents\GitHub\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(183,35): warning C4244: '-=': conversion from 'double' to 'int', possible loss of data
-C:\Users\Ryan Gillespie\Documents\GitHub\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(227,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Ryan Gillespie\Documents\GitHub\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(243,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Ryan Gillespie\Documents\GitHub\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(269,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Ryan Gillespie\Documents\GitHub\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(271,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Ryan Gillespie\Documents\GitHub\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(355,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Ryan Gillespie\Documents\GitHub\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(362,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Ryan Gillespie\Documents\GitHub\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(369,20): warning C4018: '<': signed/unsigned mismatch
+E:\GAME Programing\Winter 2021\Game 1014 Production\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(135,36): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+E:\GAME Programing\Winter 2021\Game 1014 Production\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(141,36): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+E:\GAME Programing\Winter 2021\Game 1014 Production\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(147,36): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+E:\GAME Programing\Winter 2021\Game 1014 Production\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(153,36): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+E:\GAME Programing\Winter 2021\Game 1014 Production\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(249,20): warning C4018: “<”: 有符号/无符号不匹配
+E:\GAME Programing\Winter 2021\Game 1014 Production\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(265,21): warning C4018: “<”: 有符号/无符号不匹配
+E:\GAME Programing\Winter 2021\Game 1014 Production\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(293,20): warning C4018: “<”: 有符号/无符号不匹配
+E:\GAME Programing\Winter 2021\Game 1014 Production\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(296,20): warning C4018: “<”: 有符号/无符号不匹配
+E:\GAME Programing\Winter 2021\Game 1014 Production\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(386,20): warning C4018: “<”: 有符号/无符号不匹配
+E:\GAME Programing\Winter 2021\Game 1014 Production\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(393,20): warning C4018: “<”: 有符号/无符号不匹配
+E:\GAME Programing\Winter 2021\Game 1014 Production\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(400,20): warning C4018: “<”: 有符号/无符号不匹配
   Main.cpp
   PlatformPlayer.cpp
-C:\Users\Ryan Gillespie\Documents\GitHub\GAME_PRODUCTION\GAME1007_SDLTemplate\PlatformPlayer.cpp(112,52): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\Ryan Gillespie\Documents\GitHub\GAME_PRODUCTION\GAME1007_SDLTemplate\PlatformPlayer.cpp(114,52): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-  Generating Code...
-  GAME1007_SDLTemplate.vcxproj -> C:\Users\Ryan Gillespie\Documents\GitHub\GAME_PRODUCTION\Debug\GAME1007_SDLTemplate.exe
->>>>>>> HUD
-=======
-﻿  Engine.cpp
-C:\Users\migue\Desktop\COLLEGE COURSES\Semester 2\GAME1014 Game Production 2\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(98,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\migue\Desktop\COLLEGE COURSES\Semester 2\GAME1014 Game Production 2\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(104,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\migue\Desktop\COLLEGE COURSES\Semester 2\GAME1014 Game Production 2\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(110,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\migue\Desktop\COLLEGE COURSES\Semester 2\GAME1014 Game Production 2\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(116,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\migue\Desktop\COLLEGE COURSES\Semester 2\GAME1014 Game Production 2\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(226,20): warning C4018: '<': signed/unsigned mismatch
-  GAME1007_SDLTemplate.vcxproj -> C:\Users\migue\Desktop\COLLEGE COURSES\Semester 2\GAME1014 Game Production 2\GAME_PRODUCTION\Debug\GAME1007_SDLTemplate.exe
->>>>>>> EnemyClass_Miguel
+E:\GAME Programing\Winter 2021\Game 1014 Production\GAME_PRODUCTION\GAME1007_SDLTemplate\PlatformPlayer.cpp(112,52): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
+E:\GAME Programing\Winter 2021\Game 1014 Production\GAME_PRODUCTION\GAME1007_SDLTemplate\PlatformPlayer.cpp(114,52): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
+  正在生成代码...
+  GAME1007_SDLTemplate.vcxproj -> E:\GAME Programing\Winter 2021\Game 1014 Production\GAME_PRODUCTION\Debug\GAME1007_SDLTemplate.exe
