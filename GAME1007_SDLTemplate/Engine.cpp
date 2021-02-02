@@ -178,7 +178,8 @@ void Engine::Update()
 	m_player.Update();
 	if (m_player.GetDstRect()->x > (WIDTH / 3))
 	{
-		m_Camera.x -= m_player.GetVelX();
+		//m_Camera.x -= m_player.GetVelX();
+		m_Camera.x = -m_player.GetDstRect()->x+WIDTH/2;
 	}
 
 	

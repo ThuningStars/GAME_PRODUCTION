@@ -1,46 +1,13 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 ﻿  Engine.cpp
-C:\Users\HP\Desktop\Game Programming Semester 2\Game Production II - GAME1014\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(79,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\HP\Desktop\Game Programming Semester 2\Game Production II - GAME1014\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(85,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\HP\Desktop\Game Programming Semester 2\Game Production II - GAME1014\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(91,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\HP\Desktop\Game Programming Semester 2\Game Production II - GAME1014\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(97,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\HP\Desktop\Game Programming Semester 2\Game Production II - GAME1014\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(122,35): warning C4244: '-=': conversion from 'double' to 'int', possible loss of data
-  Main.cpp
-  Generating Code...
+C:\Users\HP\Desktop\Game Programming Semester 2\Game Production II - GAME1014\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(112,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\HP\Desktop\Game Programming Semester 2\Game Production II - GAME1014\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(118,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\HP\Desktop\Game Programming Semester 2\Game Production II - GAME1014\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(124,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\HP\Desktop\Game Programming Semester 2\Game Production II - GAME1014\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(130,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\HP\Desktop\Game Programming Semester 2\Game Production II - GAME1014\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(226,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\HP\Desktop\Game Programming Semester 2\Game Production II - GAME1014\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(242,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\HP\Desktop\Game Programming Semester 2\Game Production II - GAME1014\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(268,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\HP\Desktop\Game Programming Semester 2\Game Production II - GAME1014\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(270,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\HP\Desktop\Game Programming Semester 2\Game Production II - GAME1014\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(344,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\HP\Desktop\Game Programming Semester 2\Game Production II - GAME1014\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(351,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\HP\Desktop\Game Programming Semester 2\Game Production II - GAME1014\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(358,20): warning C4018: '<': signed/unsigned mismatch
   GAME1007_SDLTemplate.vcxproj -> C:\Users\HP\Desktop\Game Programming Semester 2\Game Production II - GAME1014\GAME_PRODUCTION\Debug\GAME1007_SDLTemplate.exe
-=======
-﻿  PlatformPlayer.cpp
-E:\GAME Programing\Winter 2021\Game 1014 Production\GAME_PRODUCTION\GAME1007_SDLTemplate\PlatformPlayer.cpp(112,52): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
-E:\GAME Programing\Winter 2021\Game 1014 Production\GAME_PRODUCTION\GAME1007_SDLTemplate\PlatformPlayer.cpp(114,52): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
-  GAME1007_SDLTemplate.vcxproj -> E:\GAME Programing\Winter 2021\Game 1014 Production\GAME_PRODUCTION\Debug\GAME1007_SDLTemplate.exe
->>>>>>> Animation_Betty
-=======
-﻿  Enemy.cpp
-  GAME1007_SDLTemplate.vcxproj -> C:\Users\migue\Desktop\COLLEGE COURSES\Semester 2\GAME1014 Game Production 2\GAME_PRODUCTION\Debug\GAME1007_SDLTemplate.exe
->>>>>>> EnemyClass_Miguel
-=======
-﻿  Engine.cpp
-C:\Users\russe\GBC\GAME1014_True_Proto\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(87,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\russe\GBC\GAME1014_True_Proto\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(93,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\russe\GBC\GAME1014_True_Proto\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(99,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\russe\GBC\GAME1014_True_Proto\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(105,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\russe\GBC\GAME1014_True_Proto\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(237,20): warning C4018: '<': signed/unsigned mismatch
-  GAME1007_SDLTemplate.vcxproj -> C:\Users\russe\GBC\GAME1014_True_Proto\GAME_PRODUCTION\Debug\GAME1007_SDLTemplate.exe
->>>>>>> EnemyPlayerCollisionsAndPlayerRespawn_Russell
-=======
-﻿  Engine.cpp
-F:\GitProjects\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(95,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-F:\GitProjects\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(101,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-F:\GitProjects\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(107,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-F:\GitProjects\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(113,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-F:\GitProjects\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(135,20): warning C4018: '<': signed/unsigned mismatch
-F:\GitProjects\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(151,21): warning C4018: '<': signed/unsigned mismatch
-F:\GitProjects\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(176,20): warning C4018: '<': signed/unsigned mismatch
-F:\GitProjects\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(178,20): warning C4018: '<': signed/unsigned mismatch
-F:\GitProjects\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(224,20): warning C4018: '<': signed/unsigned mismatch
-F:\GitProjects\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(231,20): warning C4018: '<': signed/unsigned mismatch
-  GAME1007_SDLTemplate.vcxproj -> F:\GitProjects\GAME_PRODUCTION\Debug\GAME1007_SDLTemplate.exe
->>>>>>> PlayerBullet_Joshua
