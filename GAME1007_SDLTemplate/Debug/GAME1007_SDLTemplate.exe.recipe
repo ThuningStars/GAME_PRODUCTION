@@ -1,24 +1,7 @@
-<<<<<<< HEAD
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project>
-  <ProjectOutputs>
-    <ProjectOutput>
-      <FullPath>C:\Users\russe\GBC\GAME1014_True_Proto\GAME_PRODUCTION\Debug\GAME1007_SDLTemplate.exe</FullPath>
-    </ProjectOutput>
-  </ProjectOutputs>
-  <ContentFiles />
-  <SatelliteDlls />
-  <NonRecipeFileRefs />
-=======
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project>
-  <ProjectOutputs>
-    <ProjectOutput>
-      <FullPath>F:\GitProjects\GAME_PRODUCTION\Debug\GAME1007_SDLTemplate.exe</FullPath>
-    </ProjectOutput>
-  </ProjectOutputs>
-  <ContentFiles />
-  <SatelliteDlls />
-  <NonRecipeFileRefs />
->>>>>>> PlayerBullet_Joshua
+  <ProjectOutputs>C:\Users\Ryan Gillespie\Documents\GitHub\GAME_PRODUCTION\Debug\GAME1007_SDLTemplate.exe</ProjectOutputs>
+  <ContentFiles></ContentFiles>
+  <SatelliteDlls></SatelliteDlls>
+  <NonRecipeFileRefs></NonRecipeFileRefs>
 </Project>

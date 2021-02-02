@@ -4,6 +4,7 @@
 
 #include "SDL.h"
 #include <iostream>
+#include <string>
 #include <vector>
 
 #include "PlatformPlayer.h"
@@ -22,7 +23,8 @@ class Engine
 {
 private: // private properties.
 	bool m_running = false;
-	Uint32 m_start, m_end, m_delta, m_fps;
+	Uint32 m_start, m_end, m_delta, m_fps, score = 0;
+	string scoreString;
 	const Uint8* m_keystates;
 	SDL_Window* m_pWindow;
 	SDL_Renderer* m_pRenderer;
@@ -38,11 +40,13 @@ private: // private properties.
 	PlatformPlayer m_player;
 	vector<Bullet*> m_playerbullet;
 	vector<LeftBullet*> m_playerleftbullet;
-	SDL_Texture* m_playerIdleTexture, *m_playerRunTexture;
+	SDL_Texture* m_playerIdleTexture, *m_playerRunTexture, *heartTexture;
 	SDL_RendererFlip flip = SDL_FLIP_NONE;
 	Sprite m_enemy;
 	vector<Enemy*> m_enemyCreation;
 	int m_EnemyTimer;
+
+	
 
 	// Textures
 	SDL_Texture* m_pTexture;

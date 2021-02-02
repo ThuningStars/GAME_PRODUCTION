@@ -1,6 +1,7 @@
 #include "Engine.h"
 
 #include <SDL_image.h>
+#include <SDL_ttf.h>
 
 int playerHealth = 3;
 int coolDown = 0;
@@ -26,6 +27,7 @@ int Engine::Init(const char* title, int xPos, int yPos, int width, int height, i
 				{
 					m_playerIdleTexture = IMG_LoadTexture(m_pRenderer, "../assets/player/idle.png");
 					m_playerRunTexture = IMG_LoadTexture(m_pRenderer, "../assets/player/run.png");
+					heartTexture = IMG_LoadTexture(m_pRenderer, "../assets/HUD/heart.png");
 				}
 				else return false;
 			}
@@ -140,7 +142,7 @@ void Engine::CheckCollision()
 			coolDown--;
 		}
 
-		// If the player gets hit they lose health and can't get hit again unti the cooldown ends
+		// If the player gets hit they lose health and can't get hit again until the cooldown ends
 		if (SDL_HasIntersection(m_player.GetDstRect(), m_enemyCreation[i]->GetRect()) && coolDown == 0)
 		{
 			cout << "Hit!!" << endl << endl;
@@ -273,7 +275,7 @@ void Engine::Render()
 	{
 		m_enemyCreation[i]->Render(m_pRenderer);
 	}
-	if(m_player.getRunning() == false)
+	if (m_player.getRunning() == false)
 	{
 		m_player.Render(m_playerIdleTexture, m_player, flip);
 	}
@@ -282,6 +284,8 @@ void Engine::Render()
 		//SDL_RenderCopyEx(m_pRenderer, m_playerRunTexture, m_player.GetSrcRect(), m_player.GetDstRect(), 0, NULL, flip);
 		m_player.Render(m_playerRunTexture, m_player, flip);
 	}
+
+	
 
 	SDL_RenderSetViewport(m_pRenderer, &m_Camera);
 	// flip the sprites face to another side
@@ -294,9 +298,17 @@ void Engine::Render()
 		flip = SDL_FLIP_NONE;
 	}
 	
+	//health rendering
+	SDL_Rect heartRenderPosition = { -400 + m_player.GetDstRect()->x, 30, 48, 48 };
+	for (int i = 0; i < playerHealth; i++)
+	{
+		SDL_RenderCopy(m_pRenderer, heartTexture, NULL, &heartRenderPosition);
+		heartRenderPosition.x += 64;
+	}
+	
 	SDL_RenderPresent(m_pRenderer); // Flip buffers - send data to window.
 	// Any drawing here...
-	
+
 	
 //	SDL_RenderPresent(m_pRenderer);
 	//SDL_RenderPresent(m_pRenderer);
