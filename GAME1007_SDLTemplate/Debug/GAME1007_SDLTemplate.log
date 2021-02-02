@@ -1,14 +1,20 @@
-﻿  Engine.cpp
-C:\Users\Ryan Gillespie\Desktop\PROJECT JAN 1\GAME_PRODUCTION-main\GAME1007_SDLTemplate\Engine.cpp(114,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Ryan Gillespie\Desktop\PROJECT JAN 1\GAME_PRODUCTION-main\GAME1007_SDLTemplate\Engine.cpp(120,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Ryan Gillespie\Desktop\PROJECT JAN 1\GAME_PRODUCTION-main\GAME1007_SDLTemplate\Engine.cpp(126,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Ryan Gillespie\Desktop\PROJECT JAN 1\GAME_PRODUCTION-main\GAME1007_SDLTemplate\Engine.cpp(132,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Ryan Gillespie\Desktop\PROJECT JAN 1\GAME_PRODUCTION-main\GAME1007_SDLTemplate\Engine.cpp(183,35): warning C4244: '-=': conversion from 'double' to 'int', possible loss of data
-C:\Users\Ryan Gillespie\Desktop\PROJECT JAN 1\GAME_PRODUCTION-main\GAME1007_SDLTemplate\Engine.cpp(227,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Ryan Gillespie\Desktop\PROJECT JAN 1\GAME_PRODUCTION-main\GAME1007_SDLTemplate\Engine.cpp(243,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Ryan Gillespie\Desktop\PROJECT JAN 1\GAME_PRODUCTION-main\GAME1007_SDLTemplate\Engine.cpp(269,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Ryan Gillespie\Desktop\PROJECT JAN 1\GAME_PRODUCTION-main\GAME1007_SDLTemplate\Engine.cpp(271,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Ryan Gillespie\Desktop\PROJECT JAN 1\GAME_PRODUCTION-main\GAME1007_SDLTemplate\Engine.cpp(355,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Ryan Gillespie\Desktop\PROJECT JAN 1\GAME_PRODUCTION-main\GAME1007_SDLTemplate\Engine.cpp(362,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Ryan Gillespie\Desktop\PROJECT JAN 1\GAME_PRODUCTION-main\GAME1007_SDLTemplate\Engine.cpp(369,20): warning C4018: '<': signed/unsigned mismatch
-  GAME1007_SDLTemplate.vcxproj -> C:\Users\Ryan Gillespie\Desktop\PROJECT JAN 1\GAME_PRODUCTION-main\Debug\GAME1007_SDLTemplate.exe
+﻿  Enemy.cpp
+  Engine.cpp
+C:\Users\Ryan Gillespie\Documents\GitHub\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(114,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Ryan Gillespie\Documents\GitHub\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(120,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Ryan Gillespie\Documents\GitHub\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(126,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Ryan Gillespie\Documents\GitHub\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(132,36): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Ryan Gillespie\Documents\GitHub\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(183,35): warning C4244: '-=': conversion from 'double' to 'int', possible loss of data
+C:\Users\Ryan Gillespie\Documents\GitHub\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(227,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Ryan Gillespie\Documents\GitHub\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(243,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Ryan Gillespie\Documents\GitHub\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(269,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Ryan Gillespie\Documents\GitHub\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(271,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Ryan Gillespie\Documents\GitHub\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(355,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Ryan Gillespie\Documents\GitHub\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(362,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Ryan Gillespie\Documents\GitHub\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(369,20): warning C4018: '<': signed/unsigned mismatch
+  Main.cpp
+  PlatformPlayer.cpp
+C:\Users\Ryan Gillespie\Documents\GitHub\GAME_PRODUCTION\GAME1007_SDLTemplate\PlatformPlayer.cpp(112,52): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\Ryan Gillespie\Documents\GitHub\GAME_PRODUCTION\GAME1007_SDLTemplate\PlatformPlayer.cpp(114,52): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+  Generating Code...
+  GAME1007_SDLTemplate.vcxproj -> C:\Users\Ryan Gillespie\Documents\GitHub\GAME_PRODUCTION\Debug\GAME1007_SDLTemplate.exe
