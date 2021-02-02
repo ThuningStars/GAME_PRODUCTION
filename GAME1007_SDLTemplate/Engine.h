@@ -42,7 +42,7 @@ private: // private properties.
 	vector<LeftBullet*> m_playerleftbullet;
 	SDL_Texture* m_playerIdleTexture, * m_playerRunTexture, * m_playerAttackTexture;
 	SDL_Texture* m_yellowEnemyWalkTexture, * m_redEnemyWalkTexture;
-	SDL_Texture* m_playerIdleTexture, *m_playerRunTexture, *heartTexture;
+	SDL_Texture *heartTexture;
 	SDL_RendererFlip flip = SDL_FLIP_NONE;
 	SDL_RendererFlip flipEnemy = SDL_FLIP_NONE;
 	Sprite m_yellowEnemy;
