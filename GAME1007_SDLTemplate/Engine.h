@@ -4,6 +4,7 @@
 
 #include "SDL.h"
 #include <iostream>
+#include <SDL_mixer.h>
 #include <vector>
 
 #include "PlatformPlayer.h"
@@ -27,15 +28,18 @@ private: // private properties.
 								{400,500,100,20},//3
 								{0,700,1024,100},//4. Ground
 
-	}; //Position X and y, width and height 
+	}; //Position X and y, width and height
+
+	Mix_Music* m_pMusic;
+	vector<Mix_Chunk*> m_vSounds;
 	PlatformPlayer m_player;
-<<<<<<< HEAD
-	Enemy m_enemy;
-	
-=======
+	Sprite m_enemy;
+	vector<Enemy*> m_enemyCreation;
+	int m_EnemyTimer;
+
 	// Textures
 	SDL_Texture* m_pTexture;
->>>>>>> parent of bcbb831... Revert "Animation set up"
+
 
 private: // private method prototypes.
 	int Init(const char* title, int xPos, int yPos, int width, int height, int flags);
