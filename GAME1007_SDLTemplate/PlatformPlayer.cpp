@@ -112,3 +112,13 @@ double PlatformPlayer::GetVelY() { return m_velY; }
 void PlatformPlayer::SetX(float x) { m_dstRect.x = x; }
 
 void PlatformPlayer::SetY(float y) { m_dstRect.y = y; }
+
+void PlatformPlayer::setAttack(bool a)
+{
+	m_attack = a;
+}
+
+bool PlatformPlayer::getAttack()
+{
+	return m_attack;
+}
