@@ -28,14 +28,23 @@ using namespace std;
 class Enemy : public Sprite
 {
 private:
-	SDL_Rect m_dst; // Source rectangle
+	SDL_Rect m_src; // Source rectangle
 	SDL_Rect m_rect;
+
+	double m_angle = 0.0;
+	SDL_Point* m_pCenter = NULL;
+	bool m_attack = false;
+
+	int m_timer = 0;
+
 public:
 	Enemy(SDL_Point spawnLoc = { 1024, 200 });
 	~Enemy();
 	SDL_Rect* GetRect();// Source rectangle
-	void Update();
+	void Update(SDL_Rect src);
 	void Render(SDL_Renderer* rend);
+	void Render(SDL_Renderer* rend, SDL_Texture* texture, SDL_Rect src, SDL_RendererFlip flip);
+	
 };
 
 #endif

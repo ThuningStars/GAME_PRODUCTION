@@ -38,10 +38,12 @@ private: // private properties.
 	PlatformPlayer m_player;
 	vector<Bullet*> m_playerbullet;
 	vector<LeftBullet*> m_playerleftbullet;
-	SDL_Texture* m_playerIdleTexture, *m_playerRunTexture;
+	SDL_Texture* m_playerIdleTexture, * m_playerRunTexture, * m_playerAttackTexture;
+	SDL_Texture* m_yellowEnemyWalkTexture, * m_redEnemyWalkTexture;
 	SDL_RendererFlip flip = SDL_FLIP_NONE;
-	Sprite m_enemy;
-	vector<Enemy*> m_enemyCreation;
+	SDL_RendererFlip flipEnemy = SDL_FLIP_NONE;
+	Sprite m_yellowEnemy;
+	vector<Enemy*> m_yellowEnemyCreation;
 	int m_EnemyTimer;
 
 	// Textures

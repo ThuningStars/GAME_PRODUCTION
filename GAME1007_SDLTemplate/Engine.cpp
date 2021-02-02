@@ -26,6 +26,10 @@ int Engine::Init(const char* title, int xPos, int yPos, int width, int height, i
 				{
 					m_playerIdleTexture = IMG_LoadTexture(m_pRenderer, "../assets/player/idle.png");
 					m_playerRunTexture = IMG_LoadTexture(m_pRenderer, "../assets/player/run.png");
+					m_playerAttackTexture = IMG_LoadTexture(m_pRenderer, "../assets/player/attack.png");
+					m_yellowEnemyWalkTexture = IMG_LoadTexture(m_pRenderer, "../assets/enemy/green walking .png");
+					m_redEnemyWalkTexture = IMG_LoadTexture(m_pRenderer, "../assets/enemy/red walking.png");
+
 				}
 				else return false;
 			}
@@ -38,6 +42,7 @@ int Engine::Init(const char* title, int xPos, int yPos, int width, int height, i
 	m_keystates = SDL_GetKeyboardState(nullptr);
 	
 	m_player.Init(m_pRenderer);
+	m_yellowEnemy.m_src = {0,0,200,292};
 	cout << "Initialization successful!" << endl;
 	m_running = true;
 	return true;
@@ -73,6 +78,7 @@ void Engine::HandleEvents()
 				// Spawn a right bullet
 				m_playerbullet.push_back(new Bullet({ m_player.GetDstRect()->x + 60, m_player.GetDstRect()->y + 40 }));
 				m_playerbullet.shrink_to_fit();
+				m_player.setAttack(true);
 			}
 				cout << "New bullet vector capacity: " << m_playerbullet.capacity() << endl;
 			if (event.key.keysym.sym == SDLK_k  && m_start % 2 * 1 == 0)
@@ -81,12 +87,14 @@ void Engine::HandleEvents()
 				m_playerleftbullet.push_back(new LeftBullet({ m_player.GetDstRect()->x + 0, m_player.GetDstRect()->y + 40 }));
 				m_playerleftbullet.shrink_to_fit();
 				cout << "New bullet vector capacity: " << m_playerleftbullet.capacity() << endl;
+				m_player.setAttack(true);
 			}
 		
 
 		case SDL_KEYUP:
 			// change animation to idle
 			m_player.SetRunning(false);
+			m_player.setAttack(false);
 		}
 	}
 }
@@ -132,7 +140,7 @@ void Engine::CheckCollision()
 
 		}
 	}
-	for (unsigned i = 0; i < m_enemyCreation.size(); i++)
+	for (unsigned i = 0; i < m_yellowEnemyCreation.size(); i++)
 	{
 		// Cooldown feature
 		if (coolDown > 0 && coolDown != 0)
@@ -141,7 +149,7 @@ void Engine::CheckCollision()
 		}
 
 		// If the player gets hit they lose health and can't get hit again unti the cooldown ends
-		if (SDL_HasIntersection(m_player.GetDstRect(), m_enemyCreation[i]->GetRect()) && coolDown == 0)
+		if (SDL_HasIntersection(m_player.GetDstRect(), m_yellowEnemyCreation[i]->GetRect()) && coolDown == 0)
 		{
 			cout << "Hit!!" << endl << endl;
 			playerHealth--;
@@ -188,25 +196,25 @@ void Engine::Update()
 	if (m_EnemyTimer == 150)
 	{
 		
-		m_enemyCreation.push_back(new Enemy({ 1024,(650) }));
-		m_enemyCreation.shrink_to_fit();
-		cout << " New Enemy vector capacity " <<m_enemyCreation.capacity() << endl;
+		m_yellowEnemyCreation.push_back(new Enemy({ 1024,(554) }));
+		m_yellowEnemyCreation.shrink_to_fit();
+		cout << " New Enemy vector capacity " <<m_yellowEnemyCreation.capacity() << endl;
 		m_EnemyTimer = 0;
 	}
-	for (unsigned i = 0; i < m_enemyCreation.size(); i++) // size() is actual filled numbers of elements
+	for (unsigned i = 0; i < m_yellowEnemyCreation.size(); i++) // size() is actual filled numbers of elements
 	{
-		m_enemyCreation[i]->Update();
+		m_yellowEnemyCreation[i]->Update(m_yellowEnemy.m_src);
 
 		// Enemy delete
-		for (unsigned i = 0; i < m_enemyCreation.size(); i++) // size() is actual filled numbers of elements
+		for (unsigned i = 0; i < m_yellowEnemyCreation.size(); i++) // size() is actual filled numbers of elements
 		{
-			if (m_enemyCreation[i]->GetRect()->x < -100)
+			if (m_yellowEnemyCreation[i]->GetRect()->x < -100)
 
 			{
-				m_enemyCreation[i] = nullptr; // get rid of the dangling pointer
-				delete m_enemyCreation[i]; // flag for reallocation
-				m_enemyCreation.erase(m_enemyCreation.begin() + i);
-				m_enemyCreation.shrink_to_fit();
+				m_yellowEnemyCreation[i] = nullptr; // get rid of the dangling pointer
+				delete m_yellowEnemyCreation[i]; // flag for reallocation
+				m_yellowEnemyCreation.erase(m_yellowEnemyCreation.begin() + i);
+				m_yellowEnemyCreation.shrink_to_fit();
 				cout << " Enemy Deleted \n";
 
 			}
@@ -263,19 +271,28 @@ void Engine::Render()
 	SDL_RenderClear(m_pRenderer);
 	//Render Platforms
 	SDL_SetRenderDrawColor(m_pRenderer, 192, 64, 0, 255);
+	
 	for (int i = 0; i < 5; i++)
 		SDL_RenderFillRect(m_pRenderer, &m_Platforms[i]);
+	
 	for (int i = 0; i < m_playerbullet.size(); i++)
 		m_playerbullet[i]->Render(m_pRenderer);
+	
 	for (int i = 0; i < m_playerleftbullet.size(); i++)
 		m_playerleftbullet[i]->Render(m_pRenderer);
-	for (unsigned i = 0; i < m_enemyCreation.size(); i++) // size() is actual filled numbers of elements
+	
+	for (unsigned i = 0; i < m_yellowEnemyCreation.size(); i++) // size() is actual filled numbers of elements
 	{
-		m_enemyCreation[i]->Render(m_pRenderer);
+		m_yellowEnemyCreation[i]->Render(m_pRenderer,m_yellowEnemyWalkTexture, m_yellowEnemy.m_src , flipEnemy);
 	}
+	
 	if(m_player.getRunning() == false)
 	{
 		m_player.Render(m_playerIdleTexture, m_player, flip);
+	}
+	else if (m_player.getAttack() == true)
+	{
+		m_player.Render(m_playerAttackTexture, m_player, flip);
 	}
 	else
 	{
@@ -285,7 +302,7 @@ void Engine::Render()
 
 	SDL_RenderSetViewport(m_pRenderer, &m_Camera);
 	// flip the sprites face to another side
-	if (KeyDown(SDL_SCANCODE_A))
+	if (KeyDown(SDL_SCANCODE_A)|| KeyDown(SDL_SCANCODE_K))
 	{
 		flip = SDL_FLIP_HORIZONTAL;
 	}
@@ -341,13 +358,13 @@ int Engine::Run()
 void Engine::Clean()
 {
 	cout << "Cleaning engine..." << endl;
-	for (int i = 0; i < m_enemyCreation.size(); i++)
+	for (int i = 0; i < m_yellowEnemyCreation.size(); i++)
 	{
-		delete m_enemyCreation[i]; // Flag for reallocation 
-		m_enemyCreation[i] = nullptr;
+		delete m_yellowEnemyCreation[i]; // Flag for reallocation 
+		m_yellowEnemyCreation[i] = nullptr;
 	}
-	m_enemyCreation.clear();
-	m_enemyCreation.shrink_to_fit();
+	m_yellowEnemyCreation.clear();
+	m_yellowEnemyCreation.shrink_to_fit();
 	for (int i = 0; i < m_playerbullet.size(); i++)
 	{
 		delete m_playerbullet[i]; // Flag for reallocation

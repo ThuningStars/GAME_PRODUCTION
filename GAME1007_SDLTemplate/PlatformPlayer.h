@@ -27,6 +27,7 @@ private:
 	double m_angle = 0.0;
 	SDL_Point* m_pCenter = NULL;
 	bool m_running = false;
+	bool m_attack = false;
 
 public:
 	
@@ -48,6 +49,8 @@ public:
 	double GetVelY();
 	void SetX(float x);
 	void SetY(float y);
+	void setAttack(bool a);
+	bool getAttack();
 };
 
 #endif // !_PLATFORMPLAYER_H_
