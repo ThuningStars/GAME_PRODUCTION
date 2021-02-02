@@ -2,6 +2,7 @@
 
 #include <SDL_image.h>
 #include <SDL_ttf.h>
+#include <SDL_mixer.h>
 
 int playerHealth = 3;
 int coolDown = 0;
@@ -32,6 +33,16 @@ int Engine::Init(const char* title, int xPos, int yPos, int width, int height, i
 					m_redEnemyWalkTexture = IMG_LoadTexture(m_pRenderer, "../assets/enemy/red walking.png");
 
 					heartTexture = IMG_LoadTexture(m_pRenderer, "../assets/HUD/heart.png");
+
+					if (Mix_Init(MIX_INIT_MP3) != 0) // Mixer init success.
+					{// Load the chunks into the Mix_Chunk vector.
+						Mix_OpenAudio(22050, AUDIO_S16SYS, 2, 2048); // Good for most games.
+						Mix_AllocateChannels(16);
+						m_pMusic = Mix_LoadMUS("assets/Aud/game.mp3"); // Load the music track.
+
+
+					}
+					
 				}
 				else return false;
 			}
@@ -46,6 +57,8 @@ int Engine::Init(const char* title, int xPos, int yPos, int width, int height, i
 	m_player.Init(m_pRenderer);
 	m_yellowEnemy.m_src = {0,0,200,292};
 	cout << "Initialization successful!" << endl;
+	Mix_PlayMusic(m_pMusic, -1); // Play. -1 = looping.
+	Mix_VolumeMusic(36); // 0-MIX_MAX_VOLUME (128).
 	m_running = true;
 	return true;
 }

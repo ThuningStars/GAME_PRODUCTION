@@ -47,4 +47,17 @@ public:
 	
 };
 
+class Enemy : public Sprite
+{
+private:
+	SDL_Rect m_dst; // Source rectangle
+	SDL_Rect m_rect;
+public:
+	Enemy(SDL_Point spawnLoc = { 1024, 200 });
+	~Enemy();
+	SDL_Rect* GetRect();// Source rectangle
+	void Update();
+	void Render(SDL_Renderer* rend);
+};
+
 #endif

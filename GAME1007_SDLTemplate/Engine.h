@@ -5,6 +5,7 @@
 #include "SDL.h"
 #include <iostream>
 #include <string>
+#include <SDL_mixer.h>
 #include <vector>
 
 #include "PlatformPlayer.h"
@@ -34,6 +35,10 @@ private: // private properties.
 								{400,700,100,20},//3
 								{0,700,10240,100},//4. Ground
 
+	}; //Position X and y, width and height
+
+	Mix_Music* m_pMusic;
+	vector<Mix_Chunk*> m_vSounds;
 	}; //Position X and y, width and height
 
 	SDL_Rect m_Camera = { 100, 0, WIDTH, HEIGHT };
