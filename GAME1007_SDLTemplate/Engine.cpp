@@ -33,7 +33,8 @@ int Engine::Init(const char* title, int xPos, int yPos, int width, int height, i
 					m_redEnemyWalkTexture = IMG_LoadTexture(m_pRenderer, "../assets/enemy/red walking.png");
 
 					heartTexture = IMG_LoadTexture(m_pRenderer, "../assets/HUD/heart.png");
-
+					cout << "Fourth pass." << endl;
+					
 					if (Mix_Init(MIX_INIT_MP3) != 0) // Mixer init success.
 					{// Load the chunks into the Mix_Chunk vector.
 						Mix_OpenAudio(22050, AUDIO_S16SYS, 2, 2048); // Good for most games.
@@ -42,6 +43,7 @@ int Engine::Init(const char* title, int xPos, int yPos, int width, int height, i
 
 
 					}
+					else return false;
 					
 				}
 				else return false;
@@ -60,6 +62,7 @@ int Engine::Init(const char* title, int xPos, int yPos, int width, int height, i
 	Mix_PlayMusic(m_pMusic, -1); // Play. -1 = looping.
 	Mix_VolumeMusic(36); // 0-MIX_MAX_VOLUME (128).
 	m_running = true;
+	
 	return true;
 }
 
