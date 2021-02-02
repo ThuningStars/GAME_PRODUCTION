@@ -39,8 +39,6 @@ private: // private properties.
 
 	Mix_Music* m_pMusic;
 	vector<Mix_Chunk*> m_vSounds;
-	}; //Position X and y, width and height
-
 	SDL_Rect m_Camera = { 100, 0, WIDTH, HEIGHT };
 	PlatformPlayer m_player;
 	vector<Bullet*> m_playerbullet;
