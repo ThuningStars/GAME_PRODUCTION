@@ -19,7 +19,6 @@ Enemy::Enemy()
 	setMaxSpeed(2);
 	setType(ENEMY);
 	m_currentHeading = 0.0f; // current facing angle
-	
 }
 
 Enemy::~Enemy()
@@ -37,52 +36,6 @@ void Enemy::draw()
 
 void Enemy::update()
 {
-	
-	
-	/*else if (getTransform()->position.x <= 65 && getTransform()->position.x < 651 )
-	{
-		m_maxSpeed = getTransform()->position.x += 2;
-	}
-	if (getTransform()->position.x > 650)
-	{
-		getTransform()->position.x -= 2;
-	}*/
-	/*else if (getTransform()->position.x < 650)
-	{
-		getTransform()->position.x -= 2;
-	}*/
-	
-	//int direction = -1;
-	//
-	//switch (direction)
-	//{
-	//case -1:
-	//	// Moving Left
-	//	if (getTransform()->position.x < 50)
-	//	{
-	//		getTransform()->position.x += 2;
-	//	}
-	//	else
-	//	{
-	//		direction = 1;
-	//	}
-	//	break;
-	//case 1:
-	//	//Moving Right
-	//	if (getTransform()->position.x > 650)
-	//	{
-	//		getTransform()->position.x -= 2;
-	//	}
-	//	else
-	//	{
-	//		direction = -1;
-	//	}
-	//	break;
-	//}
-	/*direction = -1;
-	maxDist += transform.position.x;
-	minDist -= transform.position.x;*/
-	/*move();*/
 	move();
 	m_checkBounds();
 }
@@ -90,30 +43,10 @@ void Enemy::update()
 void Enemy::clean()
 {
 }
-
-void Enemy::moveForward()
-{
-	getTransform()->position.x += 2;
-}
-
-void Enemy::moveBack()
-{
-	getTransform()->position.x -= 2;
-}
-
 void Enemy::setMaxSpeed(float speed)
 {
 	m_maxSpeed = speed;
 }
-
-void Enemy::turnRight()
-{
-}
-
-void Enemy::turnLeft()
-{
-}
-
 void Enemy::move()
 {
 	m_maxSpeed = getTransform()->position.x -= 1.5;

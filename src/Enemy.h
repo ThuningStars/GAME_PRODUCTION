@@ -13,14 +13,8 @@ public:
 	void draw() override;
 	void update() override;
 	void clean() override;
-	void moveForward();
-	void moveBack();
 	void setMaxSpeed(float speed);
-	void turnRight();
-	void turnLeft();
-
 	void move();
-
 
 private:
 	void m_checkBounds();
@@ -35,7 +29,7 @@ private:
 	glm::vec2 m_currentDirection;
 	
 	glm::vec2 m_currentPosition;
-	bool turnleft, turnright;
+	bool turnright = false;
 };
 
 
