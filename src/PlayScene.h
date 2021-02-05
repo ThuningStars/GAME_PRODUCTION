@@ -7,6 +7,7 @@
 #include "Player.h"
 #include "Button.h"
 #include "Label.h"
+#include "Enemy.h"
 
 class PlayScene : public Scene
 {
@@ -27,6 +28,7 @@ private:
 	
 	glm::vec2 m_mousePosition;
 
+	Enemy* m_pEnemy;
 	Plane* m_pPlaneSprite;
 	Player* m_pPlayer;
 	bool m_playerFacingRight;
