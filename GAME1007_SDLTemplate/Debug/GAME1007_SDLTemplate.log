@@ -1,19 +1,20 @@
 ﻿  Enemy.cpp
   Engine.cpp
-E:\GAME Programing\Winter 2021\Game 1014 Production\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(135,36): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
-E:\GAME Programing\Winter 2021\Game 1014 Production\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(141,36): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
-E:\GAME Programing\Winter 2021\Game 1014 Production\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(147,36): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
-E:\GAME Programing\Winter 2021\Game 1014 Production\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(153,36): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
-E:\GAME Programing\Winter 2021\Game 1014 Production\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(249,20): warning C4018: “<”: 有符号/无符号不匹配
-E:\GAME Programing\Winter 2021\Game 1014 Production\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(265,21): warning C4018: “<”: 有符号/无符号不匹配
-E:\GAME Programing\Winter 2021\Game 1014 Production\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(293,20): warning C4018: “<”: 有符号/无符号不匹配
-E:\GAME Programing\Winter 2021\Game 1014 Production\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(296,20): warning C4018: “<”: 有符号/无符号不匹配
-E:\GAME Programing\Winter 2021\Game 1014 Production\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(386,20): warning C4018: “<”: 有符号/无符号不匹配
-E:\GAME Programing\Winter 2021\Game 1014 Production\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(393,20): warning C4018: “<”: 有符号/无符号不匹配
-E:\GAME Programing\Winter 2021\Game 1014 Production\GAME_PRODUCTION\GAME1007_SDLTemplate\Engine.cpp(400,20): warning C4018: “<”: 有符号/无符号不匹配
+E:\GAME Programing\Winter 2021\Game 1014 Production\GAME_PRODU1CTION\GAME1007_SDLTemplate\Engine.cpp(138,36): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+E:\GAME Programing\Winter 2021\Game 1014 Production\GAME_PRODU1CTION\GAME1007_SDLTemplate\Engine.cpp(144,36): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+E:\GAME Programing\Winter 2021\Game 1014 Production\GAME_PRODU1CTION\GAME1007_SDLTemplate\Engine.cpp(150,36): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+E:\GAME Programing\Winter 2021\Game 1014 Production\GAME_PRODU1CTION\GAME1007_SDLTemplate\Engine.cpp(156,36): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
+E:\GAME Programing\Winter 2021\Game 1014 Production\GAME_PRODU1CTION\GAME1007_SDLTemplate\Engine.cpp(252,20): warning C4018: “<”: 有符号/无符号不匹配
+E:\GAME Programing\Winter 2021\Game 1014 Production\GAME_PRODU1CTION\GAME1007_SDLTemplate\Engine.cpp(268,21): warning C4018: “<”: 有符号/无符号不匹配
+E:\GAME Programing\Winter 2021\Game 1014 Production\GAME_PRODU1CTION\GAME1007_SDLTemplate\Engine.cpp(296,20): warning C4018: “<”: 有符号/无符号不匹配
+E:\GAME Programing\Winter 2021\Game 1014 Production\GAME_PRODU1CTION\GAME1007_SDLTemplate\Engine.cpp(299,20): warning C4018: “<”: 有符号/无符号不匹配
+E:\GAME Programing\Winter 2021\Game 1014 Production\GAME_PRODU1CTION\GAME1007_SDLTemplate\Engine.cpp(389,20): warning C4018: “<”: 有符号/无符号不匹配
+E:\GAME Programing\Winter 2021\Game 1014 Production\GAME_PRODU1CTION\GAME1007_SDLTemplate\Engine.cpp(396,20): warning C4018: “<”: 有符号/无符号不匹配
+E:\GAME Programing\Winter 2021\Game 1014 Production\GAME_PRODU1CTION\GAME1007_SDLTemplate\Engine.cpp(403,20): warning C4018: “<”: 有符号/无符号不匹配
   Main.cpp
   PlatformPlayer.cpp
-E:\GAME Programing\Winter 2021\Game 1014 Production\GAME_PRODUCTION\GAME1007_SDLTemplate\PlatformPlayer.cpp(112,52): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
-E:\GAME Programing\Winter 2021\Game 1014 Production\GAME_PRODUCTION\GAME1007_SDLTemplate\PlatformPlayer.cpp(114,52): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
+E:\GAME Programing\Winter 2021\Game 1014 Production\GAME_PRODU1CTION\GAME1007_SDLTemplate\PlatformPlayer.cpp(112,52): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
+E:\GAME Programing\Winter 2021\Game 1014 Production\GAME_PRODU1CTION\GAME1007_SDLTemplate\PlatformPlayer.cpp(114,52): warning C4244: “=”: 从“float”转换到“int”，可能丢失数据
   正在生成代码...
-  GAME1007_SDLTemplate.vcxproj -> E:\GAME Programing\Winter 2021\Game 1014 Production\GAME_PRODUCTION\Debug\GAME1007_SDLTemplate.exe
+  LINK : 没有找到 E:\GAME Programing\Winter 2021\Game 1014 Production\GAME_PRODU1CTION\Debug\GAME1007_SDLTemplate.exe 或上一个增量链接没有生成它；正在执行完全链接
+  GAME1007_SDLTemplate.vcxproj -> E:\GAME Programing\Winter 2021\Game 1014 Production\GAME_PRODU1CTION\Debug\GAME1007_SDLTemplate.exe
