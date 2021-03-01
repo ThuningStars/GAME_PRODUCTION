@@ -31,6 +31,7 @@ int Engine::Init(const char* title, int xPos, int yPos, int width, int height, i
 					m_playerAttackTexture = IMG_LoadTexture(m_pRenderer, "../assets/player/attack.png");
 					m_yellowEnemyWalkTexture = IMG_LoadTexture(m_pRenderer, "../assets/enemy/green walking .png");
 					m_redEnemyWalkTexture = IMG_LoadTexture(m_pRenderer, "../assets/enemy/red walking.png");
+					m_groundTexture = IMG_LoadTexture(m_pRenderer, "../assets/textures/ground.png");
 
 					heartTexture = IMG_LoadTexture(m_pRenderer, "../assets/HUD/heart.png");
 					cout << "Fourth pass." << endl;
@@ -126,34 +127,35 @@ bool Engine::KeyDown(const SDL_Scancode c)
 
 void Engine::CheckCollision()
 {
-	for (int i = 0; i < 5; i++)
+	//I edited this section to work no matter how many platforms there are, @ Ryan on discord if it's confusing
+	for (SDL_Rect x : m_Platforms)
 	{
-		if (SDL_HasIntersection(m_player.GetDstRect(), &m_Platforms[i]))
+		if (SDL_HasIntersection(m_player.GetDstRect(), &x))
 		{
-			if( (m_player.GetDstRect()->y + m_player.GetDstRect()->h) - (float)m_player.GetVelY() <= m_Platforms[i].y )
+			if( (m_player.GetDstRect()->y + m_player.GetDstRect()->h) - (float)m_player.GetVelY() <= x.y )
 			{
 				//colliding with the top side of platforms.
 				m_player.SetGrounded(true);
 				m_player.StopY();
-				m_player.SetY(m_Platforms[i].y - m_player.GetDstRect()->h);
+				m_player.SetY(x.y - m_player.GetDstRect()->h);
 			}
-			else if (m_player.GetDstRect()->y - (float)m_player.GetVelY() >= (m_Platforms[i].y + m_Platforms[i].h ))
+			else if (m_player.GetDstRect()->y - (float)m_player.GetVelY() >= (x.y + x.h ))
 			{
 				//colliding with the bottom side of platforms.
 				m_player.StopY();
-				m_player.SetY(m_Platforms[i].y + m_Platforms[i].h);
+				m_player.SetY(x.y + x.h);
 			}
-			else if ((m_player.GetDstRect()->x + m_player.GetDstRect()->w) - (float)m_player.GetVelX() <= m_Platforms[i].x )
+			else if ((m_player.GetDstRect()->x + m_player.GetDstRect()->w) - (float)m_player.GetVelX() <= x.x )
 			{
 				//colliding with the left side of platforms.
 				m_player.StopX();
-				m_player.SetX(m_Platforms[i].x - m_Platforms[i].w);
+				m_player.SetX(x.x - x.w);
 			}
-			else if (m_player.GetDstRect()->x - (float)m_player.GetVelX() >= (m_Platforms[i].x + m_Platforms[i].w))
+			else if (m_player.GetDstRect()->x - (float)m_player.GetVelX() >= (x.x + x.w))
 			{
 				//colliding with the right side of platforms.
 				m_player.StopX();
-				m_player.SetX(m_Platforms[i].x + m_Platforms[i].w);
+				m_player.SetX(x.x + x.w);
 			}
 
 		}
@@ -174,6 +176,17 @@ void Engine::CheckCollision()
 			coolDown = 300;
 			cout << "You have " << playerHealth << " left" << endl << endl;
 		}
+	}
+
+	//Here's the logic for checking if the player fell off the edge
+	if (m_player.GetDstRect()->y > 1000)
+	{
+		cout << "You died!" << "/n";
+
+		//where the player respawns
+		m_player.SetX(462);
+		m_player.SetY(0);
+		playerHealth--;
 	}
 }
 
@@ -205,7 +218,7 @@ void Engine::Update()
 	if (m_player.GetDstRect()->x > (WIDTH / 3))
 	{
 		//m_Camera.x -= m_player.GetVelX();
-		m_Camera.x = -m_player.GetDstRect()->x+WIDTH/2;
+		//m_Camera.x = -m_player.GetDstRect()->x+WIDTH/2;
 	}
 
 	
@@ -246,7 +259,7 @@ void Engine::Update()
 	}
 	CheckCollision();
 
-	cout << m_player.GetDstRect()->x << endl<<m_Camera.x<<endl;
+	//cout << m_player.GetDstRect()->x << endl<<m_Camera.x<<endl;
 
 
 	for (int i = 0; i < m_playerbullet.size(); i++)
@@ -290,8 +303,13 @@ void Engine::Render()
 	//Render Platforms
 	SDL_SetRenderDrawColor(m_pRenderer, 192, 64, 0, 255);
 	
-	for (int i = 0; i < 5; i++)
-		SDL_RenderFillRect(m_pRenderer, &m_Platforms[i]);
+	//todo: fill with ground texture instead
+	for (SDL_Rect x : m_Platforms)
+	{ 
+		SDL_RenderFillRect(m_pRenderer, &x);
+		//SDL_RenderCopyEx(m_pRenderer, m_groundTexture, &textureSrc, &m_Platforms[i], 0, NULL, SDL_FLIP_NONE);
+		SDL_RenderCopy(m_pRenderer, m_groundTexture, NULL, &x);
+	}
 	
 	for (int i = 0; i < m_playerbullet.size(); i++)
 		m_playerbullet[i]->Render(m_pRenderer);
@@ -320,7 +338,7 @@ void Engine::Render()
 
 	
 
-	SDL_RenderSetViewport(m_pRenderer, &m_Camera);
+	//SDL_RenderSetViewport(m_pRenderer, &m_Camera);
 	// flip the sprites face to another side
 	if (KeyDown(SDL_SCANCODE_A)|| KeyDown(SDL_SCANCODE_K))
 	{
@@ -332,7 +350,7 @@ void Engine::Render()
 	}
 	
 	//health rendering
-	SDL_Rect heartRenderPosition = { -400 + m_player.GetDstRect()->x, 30, 48, 48 };
+	SDL_Rect heartRenderPosition = { 10, 30, 48, 48 };
 	for (int i = 0; i < playerHealth; i++)
 	{
 		SDL_RenderCopy(m_pRenderer, heartTexture, NULL, &heartRenderPosition);

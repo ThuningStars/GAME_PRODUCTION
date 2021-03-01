@@ -29,21 +29,24 @@ private: // private properties.
 	const Uint8* m_keystates;
 	SDL_Window* m_pWindow;
 	SDL_Renderer* m_pRenderer;
-	SDL_Rect m_Platforms[5] = { {100,600,100,20},//0
+	SDL_Rect m_Platforms[6] = { {100,600,100,20},//0
 								{200,500,100,20},//1
 								{300,400,100,20},//2
 								{400,700,100,20},//3
-								{0,700,10240,100},//4. Ground
+								{0,700,300,100},//4. Ground left
+								{600, 700, 300, 100} //5 Ground right
 
 	}; //Position X and y, width and height
+	//size of the ground texture for rendering
+	SDL_Rect textureSrc = { 0, 0, 225, 225 }; //NOT CURRENTLY USING THIS VARIABLE
 
 	Mix_Music* m_pMusic;
 	vector<Mix_Chunk*> m_vSounds;
-	SDL_Rect m_Camera = { 100, 0, WIDTH, HEIGHT };
+	//SDL_Rect m_Camera = { 100, 0, WIDTH, HEIGHT };
 	PlatformPlayer m_player;
 	vector<Bullet*> m_playerbullet;
 	vector<LeftBullet*> m_playerleftbullet;
-	SDL_Texture* m_playerIdleTexture, * m_playerRunTexture, * m_playerAttackTexture;
+	SDL_Texture* m_playerIdleTexture, * m_playerRunTexture, * m_playerAttackTexture, * m_groundTexture;
 	SDL_Texture* m_yellowEnemyWalkTexture, * m_redEnemyWalkTexture;
 	SDL_Texture *heartTexture;
 	SDL_RendererFlip flip = SDL_FLIP_NONE;
