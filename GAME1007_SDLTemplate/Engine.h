@@ -28,13 +28,48 @@ private: // private properties.
 	string scoreString;
 	const Uint8* m_keystates;
 	SDL_Window* m_pWindow;
-	SDL_Renderer* m_pRenderer;
-	SDL_Rect m_Platforms[6] = { {100,600,100,20},//0
-								{200,500,100,20},//1
-								{300,400,100,20},//2
-								{400,700,100,20},//3
-								{0,700,300,100},//4. Ground left
-								{600, 700, 300, 100} //5 Ground right
+	SDL_Renderer* m_pRenderer;		// FIRTS
+	SDL_Rect m_Platforms[30] = { {0,570,170,20},////first jump ground + enemies
+								{0,470,50	,100},// first jump ground WALL
+								{50,520,60	,70}, //first jump ground OBSTACLE - REMEMBER CHANGE TEXTURES OF OBSTACLES
+
+								//SECOND
+								{210,440,120,20},// 2 jump ground
+								{330,440,100,20},// 2 jump ground
+								{430,240,20,220},// 2 jump WALL
+								{230,325,30,30},// 2 jump OBSTACLE
+								{310,365,30,30},
+								{400,410,30,30},// 2 jump OBSTACLE
+
+
+								// third
+								 {0,300,140,20}, // TOP LEFT GROUND
+								{120,210,20,20}, // TOP LEFT GROUND JUMP OBSTACLE
+
+								//four
+								 {200,170,250,20},
+								//FIFT
+								
+								{640,340,70,20},
+								{750,240,20,20},
+								{850,190,20,20},
+
+								
+								
+
+
+								//GROUND
+								{400,650,100,20},//initial structure
+								{0,720,300,50},// Ground left
+								{200,670,50,50},// obstacle Ground left
+								{600, 720, 200, 50}, // Ground right
+								{600, 680, 100, 50},//Ground right second level
+								{600, 630, 50, 50},// Ground right
+								{600, 530, 50, 50},
+								{960, 720, 70, 50}, // top down right
+
+								//GOAL
+								{940,100,120,20},// goal
 
 	}; //Position X and y, width and height
 	//size of the ground texture for rendering

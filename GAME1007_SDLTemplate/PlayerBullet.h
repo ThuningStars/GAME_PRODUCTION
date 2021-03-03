@@ -61,7 +61,7 @@ public:
 	{
 		cout << "Constructing Bullet at " << &(*this) << endl;
 		this->m_rect.x = spawnLoc.x;
-		this->m_rect.y = spawnLoc.y;
+		this->m_rect.y = spawnLoc.y - 20;
 		this->m_rect.w = 8;
 		this->m_rect.h = 8;
 
@@ -105,7 +105,7 @@ public:
 	{
 		cout << "Constructing Bullet at " << &(*this) << endl;
 		this->m_rect.x = spawnLoc.x;
-		this->m_rect.y = spawnLoc.y;
+		this->m_rect.y = spawnLoc.y -20;
 		this->m_rect.w = 8;
 		this->m_rect.h = 8;
 

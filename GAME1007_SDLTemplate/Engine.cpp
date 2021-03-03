@@ -185,7 +185,7 @@ void Engine::CheckCollision()
 
 		//where the player respawns
 		m_player.SetX(462);
-		m_player.SetY(0);
+		m_player.SetY(600);
 		playerHealth--;
 	}
 }

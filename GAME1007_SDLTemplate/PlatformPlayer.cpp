@@ -7,14 +7,14 @@ void PlatformPlayer::Init(SDL_Renderer* r)
 {
 	m_pRend = r;
 	m_srcRect = { 0,0,198,261 };
-	m_dstRect = { 462,0,66,87 };
+	m_dstRect = { 462,550,35,50 };
 	m_grounded = true;
 
 	m_accelerationX = m_accelerationY = m_velX = m_velY = 0.0;
-	m_maxVelX = 10.0;
+	m_maxVelX = 15.0;
 	m_maxVelY = JUMPFORCE;
 	m_gravity = GRAVITY;
-	m_drag = 0.88;
+	m_drag = 0.80;
 }
 
 SDL_Rect* PlatformPlayer::GetDstRect()
@@ -31,12 +31,12 @@ void PlatformPlayer::Update()
 {
 	// X axis
 	m_velX += m_accelerationX;
-	m_velX *= (m_grounded ? m_drag : 1.0);
+	m_velX *= (m_grounded ? m_drag : 0.91);
 	m_velX = std::min(std::max(m_velX, -m_maxVelX), m_maxVelX);
 	m_dstRect.x += (int)m_velX;
 	// Y axis
 	m_velY += m_accelerationY + m_gravity;
-	m_velY = std::min(std::max(m_velY, -m_maxVelY), (m_gravity*3.0));
+	m_velY = std::min(std::max(m_velY, -m_maxVelY), (m_gravity));
 	m_dstRect.y += (int)m_velY;
 	// Reset acceleration.
 	m_accelerationX = m_accelerationY = 0.0;
@@ -74,8 +74,7 @@ void PlatformPlayer::Update()
 
 void PlatformPlayer::Render(SDL_Texture* texture, PlatformPlayer player, SDL_RendererFlip flip)
 {
-	//SDL_SetRenderDrawColor(m_rend, 255, 255, 255, 255);
-	//SDL_RenderFillRect(m_rend, GetRect());
+	
 	SDL_RenderCopyEx(m_pRend, texture, &player.m_srcRect, &player.m_dstRect, m_angle, m_pCenter, flip);
 
 }

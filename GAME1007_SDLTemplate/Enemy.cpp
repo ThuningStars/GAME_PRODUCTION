@@ -46,7 +46,7 @@ void Enemy::Update(SDL_Rect src)
 {
 	
 	
-	this->m_rect.x -= 2;
+	this->m_rect.x -= 0;
 	
 	m_timer++;
 	if (FPS / m_timer == 6)
