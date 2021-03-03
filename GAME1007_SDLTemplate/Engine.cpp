@@ -32,20 +32,22 @@ int Engine::Init(const char* title, int xPos, int yPos, int width, int height, i
 					m_yellowEnemyWalkTexture = IMG_LoadTexture(m_pRenderer, "../assets/enemy/green walking .png");
 					m_redEnemyWalkTexture = IMG_LoadTexture(m_pRenderer, "../assets/enemy/red walking.png");
 					m_groundTexture = IMG_LoadTexture(m_pRenderer, "../assets/textures/ground.png");
-
 					heartTexture = IMG_LoadTexture(m_pRenderer, "../assets/HUD/heart.png");
+					m_pBGTexture = IMG_LoadTexture(m_pRenderer, "../assets/background/clouds.png");
 					cout << "Fourth pass." << endl;
-					
+
 					if (Mix_Init(MIX_INIT_MP3) != 0) // Mixer init success.
 					{// Load the chunks into the Mix_Chunk vector.
 						Mix_OpenAudio(22050, AUDIO_S16SYS, 2, 2048); // Good for most games.
 						Mix_AllocateChannels(16);
-						m_pMusic = Mix_LoadMUS("assets/Aud/game.mp3"); // Load the music track.
+						m_pMusic = Mix_LoadMUS("../assets/Aud/limbo.mp3"); // Load the music track.
+						if (m_pMusic == nullptr)
+							cout << Mix_GetError() << endl;
 
 
 					}
 					else return false;
-					
+
 				}
 				else return false;
 			}
@@ -56,12 +58,13 @@ int Engine::Init(const char* title, int xPos, int yPos, int width, int height, i
 	else return false; // initalization failed.
 	m_fps = (Uint32)round(1.0 / (double)FPS * 1000); // Converts FPS into milliseconds, e.g. 16.67
 	m_keystates = SDL_GetKeyboardState(nullptr);
-	
+	m_bg1.m_src =  { 0,0,1024,768 };
+	m_bg1.m_dst = { 0,0,1024,768 };
 	m_player.Init(m_pRenderer);
 	m_yellowEnemy.m_src = {0,0,200,292};
 	cout << "Initialization successful!" << endl;
 	Mix_PlayMusic(m_pMusic, -1); // Play. -1 = looping.
-	Mix_VolumeMusic(36); // 0-MIX_MAX_VOLUME (128).
+	Mix_VolumeMusic(50); // 0-MIX_MAX_VOLUME (128).
 	m_running = true;
 	
 	return true;
@@ -160,6 +163,7 @@ void Engine::CheckCollision()
 
 		}
 	}
+	//enemy - player collision
 	for (unsigned i = 0; i < m_yellowEnemyCreation.size(); i++)
 	{
 		// Cooldown feature
@@ -176,8 +180,57 @@ void Engine::CheckCollision()
 			coolDown = 300;
 			cout << "You have " << playerHealth << " left" << endl << endl;
 		}
+		
 	}
 
+	//Player right bullet - collisionto enemy
+	for (unsigned i = 0; i < m_playerbullet.size(); i++)
+	{
+		for (unsigned a = 0; a < m_yellowEnemyCreation.size(); a++)
+			if (SDL_HasIntersection(m_playerbullet[i]->GetRekt(), m_yellowEnemyCreation[a]->GetRect()))
+			{
+				
+				cout << "Player bullet Collision!" << endl;
+				/*Mix_PlayChannel(-1, explosion, 0);*/
+
+				delete m_playerbullet[i]; // flag for reallocation
+				m_playerbullet[i] = nullptr; // get rid of the dangling pointer
+				m_playerbullet.erase(m_playerbullet.begin() + i);
+				m_playerbullet.shrink_to_fit();
+				cout << " Bullet Deleted \n";
+
+				delete m_yellowEnemyCreation[a]; // flag for reallocation
+				m_yellowEnemyCreation[a] = nullptr; // get rid of the dangling pointer
+				m_yellowEnemyCreation.erase(m_yellowEnemyCreation.begin() + a);
+				m_yellowEnemyCreation.shrink_to_fit();
+				cout << " Enemy Deleted \n";
+				
+			}
+	}//Player left bullet - collision to enemy
+	for (unsigned i = 0; i < m_playerleftbullet.size(); i++)
+	{
+		for (unsigned a = 0; a < m_yellowEnemyCreation.size(); a++)
+			if (SDL_HasIntersection(m_playerleftbullet[i]->GetRekt(), m_yellowEnemyCreation[a]->GetRect()))
+			{
+
+				cout << "Player bullet Collision!" << endl;
+				/*Mix_PlayChannel(-1, explosion, 0);*/
+
+				delete m_playerleftbullet[i]; // flag for reallocation
+				m_playerleftbullet[i] = nullptr; // get rid of the dangling pointer
+				m_playerleftbullet.erase(m_playerleftbullet.begin() + i);
+				m_playerleftbullet.shrink_to_fit();
+				cout << " Bullet Deleted \n";
+
+				delete m_yellowEnemyCreation[a]; // flag for reallocation
+				m_yellowEnemyCreation[a] = nullptr; // get rid of the dangling pointer
+				m_yellowEnemyCreation.erase(m_yellowEnemyCreation.begin() + a);
+				m_yellowEnemyCreation.shrink_to_fit();
+				cout << " Enemy Deleted \n";
+
+			}
+	}
+	
 	//Here's the logic for checking if the player fell off the edge
 	if (m_player.GetDstRect()->y > 1000)
 	{
@@ -224,13 +277,13 @@ void Engine::Update()
 	
 	m_EnemyTimer++;
 
-	if (m_EnemyTimer == 150)
+	if (m_EnemyTimer == 10)
 	{
-		
-		m_yellowEnemyCreation.push_back(new Enemy({ 1024,(554) }));
+
+		m_yellowEnemyCreation.push_back(new Enemy({ 100,(500) }));
 		m_yellowEnemyCreation.shrink_to_fit();
-		cout << " New Enemy vector capacity " <<m_yellowEnemyCreation.capacity() << endl;
-		m_EnemyTimer = 0;
+		cout << " New Enemy vector capacity " << m_yellowEnemyCreation.capacity() << endl;
+		
 	}
 	for (unsigned i = 0; i < m_yellowEnemyCreation.size(); i++) // size() is actual filled numbers of elements
 	{
@@ -300,8 +353,11 @@ void Engine::Render()
 
 	SDL_SetRenderDrawColor(m_pRenderer, 64, 128, 255, 255);
 	SDL_RenderClear(m_pRenderer);
+	
+	SDL_RenderCopy(m_pRenderer, m_pBGTexture, &m_bg1.m_src, &m_bg1.m_dst);
 	//Render Platforms
 	SDL_SetRenderDrawColor(m_pRenderer, 192, 64, 0, 255);
+	
 	
 	//todo: fill with ground texture instead
 	for (SDL_Rect x : m_Platforms)

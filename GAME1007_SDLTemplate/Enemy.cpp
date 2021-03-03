@@ -31,8 +31,8 @@ Enemy::Enemy(SDL_Point spawnLoc)
 	cout << "Constructing Enemy " << &(*this) << endl;
 	this->m_rect.x = spawnLoc.x;
 	this->m_rect.y = spawnLoc.y;
-	this->m_rect.w = 100;
-	this->m_rect.h = 146;
+	this->m_rect.w = 50;
+	this->m_rect.h = 73;
 
 	m_timer = 0;
 }
