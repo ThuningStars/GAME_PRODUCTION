@@ -29,7 +29,7 @@ private: // private properties.
 	const Uint8* m_keystates;
 	SDL_Window* m_pWindow;
 	SDL_Renderer* m_pRenderer;		// FIRTS
-	SDL_Rect m_Platforms[30] = {
+	SDL_Rect m_Platforms[4] = {
 
 
 
@@ -44,6 +44,8 @@ private: // private properties.
 
 		 {0,720,300,50},// Ground left
 
+			{960, 720, 70, 50}, // top down right
+
 
 
 
@@ -52,7 +54,7 @@ private: // private properties.
 
 
 	}; //Position X and y, width and height
-	SDL_Rect m_Obstacles[30]
+	SDL_Rect m_Obstacles[20]
 	{
 		//First
 	 {0,570,170,20},////first jump ground + enemies
@@ -83,8 +85,6 @@ private: // private properties.
 	{600, 680, 100, 50},//Ground right second level
 	{600, 630, 50, 50},// Ground right
 	{600, 530, 50, 50},
-	{960, 720, 70, 50}, // top down right
-
 
 //GOAL
 						{940,100,120,20},// goal

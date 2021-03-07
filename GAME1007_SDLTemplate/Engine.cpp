@@ -29,7 +29,7 @@ int Engine::Init(const char* title, int xPos, int yPos, int width, int height, i
 					m_playerIdleTexture = IMG_LoadTexture(m_pRenderer, "../assets/player/idle.png");
 					m_playerRunTexture = IMG_LoadTexture(m_pRenderer, "../assets/player/run.png");
 					m_playerAttackTexture = IMG_LoadTexture(m_pRenderer, "../assets/player/attack.png");
-					m_yellowEnemyWalkTexture = IMG_LoadTexture(m_pRenderer, "../assets/enemy/green walking .png");
+					m_yellowEnemyWalkTexture = IMG_LoadTexture(m_pRenderer, "../assets/enemy/walking.png");
 					m_redEnemyWalkTexture = IMG_LoadTexture(m_pRenderer, "../assets/enemy/red walking.png");
 					m_groundTexture = IMG_LoadTexture(m_pRenderer, "../assets/textures/ground.png");
 					heartTexture = IMG_LoadTexture(m_pRenderer, "../assets/HUD/heart.png");
@@ -65,7 +65,7 @@ int Engine::Init(const char* title, int xPos, int yPos, int width, int height, i
 	for (auto element : m_Platforms)
 	{
 		x++;
-		if (x != 4)
+		if (x != 5)
 			m_yellowEnemyCreation.push_back(new Enemy(element.x, element.y, element.x + element.w, element.y));
 
 	}

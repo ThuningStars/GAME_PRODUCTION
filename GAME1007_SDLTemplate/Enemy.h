@@ -31,7 +31,7 @@ public:
 	void Render(SDL_Renderer* rend, SDL_Texture* texture, SDL_Rect src, SDL_RendererFlip flip);
 
 };
-};
+
 
 
 

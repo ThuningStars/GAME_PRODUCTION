@@ -1,4 +1,5 @@
 #include "Enemy.h"
+
 Enemy::Enemy(int leftLimitX, int leftLimitY, int rightLimitX, int rightLimitY)
 {
 
