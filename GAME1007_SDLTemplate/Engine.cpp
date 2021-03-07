@@ -56,6 +56,15 @@ int Engine::Init(const char* title, int xPos, int yPos, int width, int height, i
 	else return false; // initalization failed.
 	m_fps = (Uint32)round(1.0 / (double)FPS * 1000); // Converts FPS into milliseconds, e.g. 16.67
 	m_keystates = SDL_GetKeyboardState(nullptr);
+
+	int x = 0;
+	for (auto element : m_Platforms)
+	{	
+		x++;
+		if (x != 4)
+			m_yellowEnemyCreation.push_back(new Enemy(element.x, element.y, element.x + element.w, element.y));
+
+	}
 	
 	m_player.Init(m_pRenderer);
 	m_yellowEnemy.m_src = {0,0,200,292};
@@ -192,6 +201,8 @@ void Engine::CheckCollision()
 
 void Engine::Update()
 {
+
+
 	//move right and left
 	if (KeyDown(SDL_SCANCODE_A))
 	{
@@ -221,20 +232,11 @@ void Engine::Update()
 		//m_Camera.x = -m_player.GetDstRect()->x+WIDTH/2;
 	}
 
-	
-	m_EnemyTimer++;
 
-	if (m_EnemyTimer == 150)
-	{
-		
-		m_yellowEnemyCreation.push_back(new Enemy({ 1024,(554) }));
-		m_yellowEnemyCreation.shrink_to_fit();
-		cout << " New Enemy vector capacity " <<m_yellowEnemyCreation.capacity() << endl;
-		m_EnemyTimer = 0;
-	}
+
 	for (unsigned i = 0; i < m_yellowEnemyCreation.size(); i++) // size() is actual filled numbers of elements
 	{
-		m_yellowEnemyCreation[i]->Update(m_yellowEnemy.m_src);
+		m_yellowEnemyCreation[i]->Update();
 
 		// Enemy delete
 		for (unsigned i = 0; i < m_yellowEnemyCreation.size(); i++) // size() is actual filled numbers of elements
