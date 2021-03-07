@@ -32,7 +32,7 @@ Enemy::Enemy(int leftLimitX, int leftLimitY, int rightLimitX, int rightLimitY)
 	m_leftY = leftLimitY;
 	m_rightX = rightLimitX - 25;
 	m_rightY = rightLimitY;
-	m_speed = -1.2;
+	m_speed = -1;
 	cout << "Constructing Enemy " << m_leftX<<" "<< m_rightX << endl;
 	
 	
@@ -51,7 +51,7 @@ Enemy::~Enemy()
 
 void Enemy::Update()
 {
-	if(m_rect.x <= m_leftX)
+	if(m_rect.x < m_leftX)
 	{
 		m_speed = -m_speed;// m_speed;
 		m_flip = SDL_FLIP_HORIZONTAL;
