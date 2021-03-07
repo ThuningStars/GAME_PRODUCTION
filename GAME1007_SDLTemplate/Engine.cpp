@@ -34,6 +34,7 @@ int Engine::Init(const char* title, int xPos, int yPos, int width, int height, i
 					m_groundTexture = IMG_LoadTexture(m_pRenderer, "../assets/textures/ground.png");
 					heartTexture = IMG_LoadTexture(m_pRenderer, "../assets/HUD/heart.png");
 					m_pBGTexture = IMG_LoadTexture(m_pRenderer, "../assets/background/clouds.png");
+					m_obstacletexture = IMG_LoadTexture(m_pRenderer, "../assets/textures/Wood.png");
 					cout << "Fourth pass." << endl;
 
 					if (Mix_Init(MIX_INIT_MP3) != 0) // Mixer init success.
@@ -60,6 +61,14 @@ int Engine::Init(const char* title, int xPos, int yPos, int width, int height, i
 	m_keystates = SDL_GetKeyboardState(nullptr);
 	m_bg1.m_src =  { 0,0,1024,768 };
 	m_bg1.m_dst = { 0,0,1024,768 };
+	int x = 0;
+	for (auto element : m_Platforms)
+	{
+		x++;
+		if (x != 4)
+			m_yellowEnemyCreation.push_back(new Enemy(element.x, element.y, element.x + element.w, element.y));
+
+	}
 	m_player.Init(m_pRenderer);
 	m_yellowEnemy.m_src = {0,0,200,292};
 	cout << "Initialization successful!" << endl;
@@ -163,6 +172,39 @@ void Engine::CheckCollision()
 
 		}
 	}
+	for (SDL_Rect x : m_Obstacles)
+	{
+		if (SDL_HasIntersection(m_player.GetDstRect(), &x))
+		{
+			if ((m_player.GetDstRect()->y + m_player.GetDstRect()->h) - (float)m_player.GetVelY() <= x.y)
+			{
+				//colliding with the top side of platforms.
+				m_player.SetGrounded(true);
+				m_player.StopY();
+				m_player.SetY(x.y - m_player.GetDstRect()->h);
+			}
+			else if (m_player.GetDstRect()->y - (float)m_player.GetVelY() >= (x.y + x.h))
+			{
+				//colliding with the bottom side of platforms.
+				m_player.StopY();
+				m_player.SetY(x.y + x.h);
+			}
+			else if ((m_player.GetDstRect()->x + m_player.GetDstRect()->w) - (float)m_player.GetVelX() <= x.x)
+			{
+				//colliding with the left side of platforms.
+				m_player.StopX();
+				m_player.SetX(x.x - x.w);
+			}
+			else if (m_player.GetDstRect()->x - (float)m_player.GetVelX() >= (x.x + x.w))
+			{
+				//colliding with the right side of platforms.
+				m_player.StopX();
+				m_player.SetX(x.x + x.w);
+			}
+
+		}
+	}
+	
 	//enemy - player collision
 	for (unsigned i = 0; i < m_yellowEnemyCreation.size(); i++)
 	{
@@ -275,19 +317,11 @@ void Engine::Update()
 	}
 
 	
-	m_EnemyTimer++;
-
-	if (m_EnemyTimer == 10)
-	{
-
-		m_yellowEnemyCreation.push_back(new Enemy({ 100,(500) }));
-		m_yellowEnemyCreation.shrink_to_fit();
-		cout << " New Enemy vector capacity " << m_yellowEnemyCreation.capacity() << endl;
-		
-	}
+	
+	
 	for (unsigned i = 0; i < m_yellowEnemyCreation.size(); i++) // size() is actual filled numbers of elements
 	{
-		m_yellowEnemyCreation[i]->Update(m_yellowEnemy.m_src);
+		m_yellowEnemyCreation[i]->Update();
 
 		// Enemy delete
 		for (unsigned i = 0; i < m_yellowEnemyCreation.size(); i++) // size() is actual filled numbers of elements
@@ -366,7 +400,14 @@ void Engine::Render()
 		//SDL_RenderCopyEx(m_pRenderer, m_groundTexture, &textureSrc, &m_Platforms[i], 0, NULL, SDL_FLIP_NONE);
 		SDL_RenderCopy(m_pRenderer, m_groundTexture, NULL, &x);
 	}
-	
+
+	for (SDL_Rect x : m_Obstacles)
+	{
+		SDL_RenderFillRect(m_pRenderer, &x);
+		//SDL_RenderCopyEx(m_pRenderer, m_groundTexture, &textureSrc, &m_Platforms[i], 0, NULL, SDL_FLIP_NONE);
+		SDL_RenderCopy(m_pRenderer, m_obstacletexture, NULL, &x);
+	}
+
 	for (int i = 0; i < m_playerbullet.size(); i++)
 		m_playerbullet[i]->Render(m_pRenderer);
 	
